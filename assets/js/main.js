@@ -313,7 +313,72 @@ async function renderSite() {
 }
 
 window.addEventListener('load', async function () {
+  // Confetti animation for loading screen
+  function startConfetti() {
+    const canvas = document.getElementById('confetti-canvas');
+    if (!canvas) return () => {};
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    let confetti = [];
+    const colors = ['#D4AF37', '#B8860B', '#F5E6E8', '#8B0000', '#2C3E50', '#FFF8F0'];
+    for (let i = 0; i < 80; i++) {
+      confetti.push({
+        x: Math.random() * W,
+        y: Math.random() * H - H,
+        r: 6 + Math.random() * 8,
+        d: 10 + Math.random() * 20,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        tilt: Math.random() * 10 - 10,
+        tiltAngle: 0,
+        tiltAngleInc: (Math.random() * 0.07) + 0.05
+      });
+    }
+    let angle = 0, tiltAngle = 0, animId;
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < confetti.length; i++) {
+        let c = confetti[i];
+        ctx.beginPath();
+        ctx.lineWidth = c.r;
+        ctx.strokeStyle = c.color;
+        ctx.moveTo(c.x + c.tilt + c.r / 3, c.y);
+        ctx.lineTo(c.x + c.tilt, c.y + c.d / 2);
+        ctx.stroke();
+      }
+      update();
+      animId = requestAnimationFrame(draw);
+    }
+    function update() {
+      angle += 0.01;
+      tiltAngle += 0.1;
+      for (let i = 0; i < confetti.length; i++) {
+        let c = confetti[i];
+        c.y += (Math.cos(angle + c.d) + 2 + c.r / 2) * 0.8;
+        c.x += Math.sin(angle);
+        c.tiltAngle += c.tiltAngleInc;
+        c.tilt = Math.sin(c.tiltAngle) * 15;
+        if (c.y > H) {
+          c.x = Math.random() * W;
+          c.y = -10;
+        }
+      }
+    }
+    draw();
+    function onResize() {
+      W = window.innerWidth; H = window.innerHeight;
+      canvas.width = W; canvas.height = H;
+    }
+    window.addEventListener('resize', onResize);
+    return () => {
+      cancelAnimationFrame(animId);
+      window.removeEventListener('resize', onResize);
+      ctx.clearRect(0, 0, W, H);
+    };
+  }
+
   const loadingScreen = document.getElementById('loadingScreen');
+  const stopConfetti = startConfetti();
   await loadPartials();
   await renderSite();
   // Once partials + data are in DOM, init UI and animations
@@ -323,10 +388,15 @@ window.addEventListener('load', async function () {
     if (window.gsap && loadingScreen) {
       gsap.to(loadingScreen, {
         opacity: 0, duration: 0.5,
-        onComplete: () => { loadingScreen.style.display = 'none'; initializeAnimations(); }
+        onComplete: () => {
+          loadingScreen.style.display = 'none';
+          if (stopConfetti) stopConfetti();
+          initializeAnimations();
+        }
       });
     } else if (loadingScreen) {
       loadingScreen.style.display = 'none';
+      if (stopConfetti) stopConfetti();
     }
   }, 2000);
 });
