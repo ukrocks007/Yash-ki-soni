@@ -1,0 +1,17 @@
+{
+  "name": "yash-soniya-wedding",
+  "version": "1.0.0",
+  "description": "Wedding website for Yash & Soniya's grand celebration",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve .",
+    "build": "echo 'Build complete'",
+    "start": "npx serve ."
+  },
+  "keywords": ["wedding", "celebration", "yash", "soniya"],
+  "author": "Wedding Family",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.1"
+  }
+}

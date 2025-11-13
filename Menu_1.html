@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash & Soniya - Wedding Menu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* PDF & Print Styling */
+        @media print {
+            body {
+                /* Ensures colors and backgrounds print correctly */
+                -webkit-print-color-adjust: exact; 
+                print-color-adjust: exact;
+                margin: 0;
+                padding: 0;
+            }
+            .poster-page {
+                /* This is the key: forces a new page after each event */
+                page-break-after: always;
+                margin: 0;
+                box-shadow: none;
+                border: none;
+            }
+        }
+
+        /* Body & Layout Setup */
+        body {
+            background-color: #F0F0F0; /* Grey background for the 'desktop' view */
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333333;
+        }
+
+        /* Page Styling (A4 Portrait - 842px x 1191px at 96 DPI) */
+        .poster-page {
+            width: 842px;
+            min-height: 1191px;
+            background-color: #FFFBF5; /* A warm, elegant cream background */
+            margin: 20px;
+            /* Optimized padding for A4 fit: slightly reduced to maximize content space */
+            padding: 50px 70px; 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 1px solid #E0DBCF;
+            box-sizing: border-box; 
+            
+            /* Flex layout to push footer down */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* --- 1. Consistent Page Header --- */
+        .page-header {
+            text-align: center;
+            border-bottom: 2px solid #B48C2A; /* Elegant Gold */
+            padding-bottom: 15px;
+            margin-bottom: 30px; /* Reduced margin */
+        }
+        .wedding-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: #B48C2A;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin: 0;
+        }
+        
+        /* --- 2. Event Title Block --- */
+        .event-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px; /* Large and attractive */
+            font-weight: 700;
+            color: #333;
+            text-align: center;
+            margin: 0;
+        }
+        .event-subtitle {
+            font-family: 'Lato', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: #5D7A68; /* Soft green accent */
+            text-align: center;
+            margin: 10px 0 40px 0; /* Reduced margin */
+            border-bottom: 1px solid #EAE6D9;
+            padding-bottom: 20px; /* Reduced padding */
+            letter-spacing: 0.5px;
+        }
+        
+        /* --- 3. Menu Content --- */
+        .menu-content {
+            flex-grow: 1; /* Pushes footer down */
+        }
+        .menu-category {
+            margin-bottom: 25px; /* Reduced margin */
+        }
+        .category-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px; /* Clear category title */
+            font-weight: 600;
+            color: #B48C2A; /* Gold */
+            border-bottom: 1px solid #EAE6D9;
+            padding-bottom: 10px;
+            margin-bottom: 18px;
+        }
+        .menu-items {
+            font-size: 19px; /* Very readable size */
+            line-height: 1.6; /* Slight reduction for fit */
+            color: #444;
+            padding-left: 10px;
+            list-style: none;
+        }
+        .menu-items li {
+            margin-bottom: 6px; /* Reduced margin */
+            position: relative;
+        }
+        /* Elegant bullet point */
+        .menu-items li::before {
+            content: '•';
+            color: #B48C2A;
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+            font-size: 20px;
+            vertical-align: middle;
+            line-height: 1px;
+            margin-right: 5px;
+        }
+        
+        /* --- 4. Consistent Page Footer --- */
+        .page-footer {
+            text-align: center;
+            margin-top: 40px; /* Reduced margin */
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 16px;
+            color: #aaa;
+            border-top: 1px solid #EAE6D9;
+            padding-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Page 1: Nov 24th - Lunch -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Lunch</h2>
+            <h3 class="event-subtitle">November 24th | 120 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Sweets</h4>
+                <ul class="menu-items">
+                    <li>Daal badam sheera, Angoori Rabdi, Karachi pista Barfi</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Starters & Farsan</h4>
+                <ul class="menu-items">
+                    <li>Gujarati Khandhavi, Sandwich Khaman, Mutter Roll</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Main Indian Course</h4>
+                <ul class="menu-items">
+                    <li>Bhendi Masala, Dum Aloo, Dewani Handi, Steam Rice, Regular Dal</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Breads</h4>
+                <ul class="menu-items">
+                    <li>Fulka, Puri</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Sides & Refreshments</h4>
+                <ul class="menu-items">
+                    <li>Fresh Green Salad, Achar, Chutney, Mukhwas, Boondi Chass, Papad/Fryums</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Ganesh Event</h4>
+                <ul class="menu-items">
+                    <li>Mocktail, Dryfruit</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+
+    <!-- Page 2: Nov 24th - Hi Tea -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Hi Tea</h2>
+            <h3 class="event-subtitle">November 24th | 120 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Snacks/Chaat</h4>
+                <ul class="menu-items">
+                    <li>SPDP, Kanda Bhaji, Sweet corn bhel</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Bakery</h4>
+                <ul class="menu-items">
+                    <li>Malpani Khari, Biscuit</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Beverages</h4>
+                <ul class="menu-items">
+                    <li>Tea, coffee, Virgin Mojito</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+
+    <!-- Page 3: Nov 24th - Dinner / Sangeet -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Dinner & Sangeet</h2>
+            <h3 class="event-subtitle">November 24th | 150 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Soup</h4>
+                <ul class="menu-items">
+                    <li>Lemon Coriander (Jain), Manchow Soup (Regular)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Starters</h4>
+                <ul class="menu-items">
+                    <li>Paneer Chilli (Jain), Veg Cigar Roll (Regular)</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Chaat</h4>
+                <ul class="menu-items">
+                    <li>Pani Puri, Oli bhel (Jain + Regular)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Indian Main</h4>
+                <ul class="menu-items">
+                    <li>Amritsari Chole, Bhature (Punjabi)</li>
+                    <li>Matka Biryani (Jain)</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Global & Regional</h4>
+                <ul class="menu-items">
+                    <li>Pizza (Jain + Regular), Pasta White & Red (Italian)</li>
+                    <li>Thalepeeth, Loni, Dahi, Thecha, Aachar (Maharashtrian)</li>
+                    <li>Masala Dosa, Manchurian Idli, 2 types of chutney (South Indian)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Dessert</h4>
+                <ul class="menu-items">
+                    <li>Mix Dryfruit Halwa, Almond Basket, Dollar Jalebi, and Sizzling Brownie with Vanilla ice cream</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Beverage</h4>
+                <ul class="menu-items">
+                    <li>Masala Milk</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+    
+    <!-- Page 4: Nov 25th - Breakfast -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Breakfast</h2>
+            <h3 class="event-subtitle">November 25th | 150 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Sweets</h4>
+                <ul class="menu-items">
+                    <li>Badam Halwa, Dollar Jalebi</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Hot Indian</h4>
+                <ul class="menu-items">
+                    <li>Puneri misal with slice, steam idli, Medu wada, Poha, Masala Moong, sambhar, chutney</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Farsan & Sides</h4>
+                <ul class="menu-items">
+                    <li>Lamba Fafda, Papaya chutney, yellow kadi, Club sandwich, barik shev, Kaju & Badam fried, Khakra ghee, peanut chutney, lemon</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Bakery & Bread</h4>
+                <ul class="menu-items">
+                    <li>Bread, butter, jam, Khari, biscuit</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Beverages</h4>
+                <ul class="menu-items">
+                    <li>Fresh orange juice, Tea, coffee, masala milk</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+    
+    <!-- Page 5: Nov 25th - Varmala Service -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Varmala Service</h2>
+            <h3 class="event-subtitle">November 25th | Interim Service</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Quick Service</h4>
+                <ul class="menu-items">
+                    <li>Mocktail, dry fruit, and Starters from the lunch menu</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+
+    <!-- Page 6: Nov 25th - Lunch -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Lunch</h2>
+            <h3 class="event-subtitle">November 25th | 200-250 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Live Soup & Specialty</h4>
+                <ul class="menu-items">
+                    <li>Hot & sour, Tomato, Kawsouy</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Starters & Farsan</h4>
+                <ul class="menu-items">
+                    <li>Green peas cheese ball, Mexican Tart (Starters)</li>
+                    <li>Alu wadi, Angoori Dahi wada (Farsan)</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Main Indian Course</h4>
+                <ul class="menu-items">
+                    <li>Paneer Tikka Masala, Veg Kolhapuri, Double B (Kathol) (Sabji)</li>
+                    <li>Jeera Rice, Dal Tadka (Jain + Regular) (Rice/Dal)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Breads</h4>
+                <ul class="menu-items">
+                    <li>Fulka, Laccha Paratha, Stuff Kulcha</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Sides & Refreshments</h4>
+                <ul class="menu-items">
+                    <li>Roasted Papad, Fresh Green Salad, Aachar, Chutney, Mukhwas, Masala Chass</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Dessert & Fruit</h4>
+                <ul class="menu-items">
+                    <li>Rabdi Malpua, Coconut Tender, White roasted barfi (Sweets)</li>
+                    <li>American Dryfruit, Sweet paan (Ice Cream)</li>
+                    <li>3 Indian Fruits, 2 Imported Fruits</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+
+    <!-- Page 7: Nov 25th - Baraat Swagat -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Baraat Swagat</h2>
+            <h3 class="event-subtitle">November 25th</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Beverages</h4>
+                <ul class="menu-items">
+                    <li>Berry Crush & Piñacolada cocktail, 200ml water bottles</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Snacks</h4>
+                <ul class="menu-items">
+                    <li>Samosa, Harabhara Kabab</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Sides</h4>
+                <ul class="menu-items">
+                    <li>4 types of dry fruits</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+    
+    <!-- Page 8: Nov 25th - Hi Tea -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Hi Tea</h2>
+            <h3 class="event-subtitle">November 25th | 120 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Snacks</h4>
+                <ul class="menu-items">
+                    <li>Moongdal Chilla, Aloo kachori, Mix bhaji</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Beverages/Sides</h4>
+                <ul class="menu-items">
+                    <li>Tea, coffee, khari, biscuit</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+    
+    <!-- Page 9: Nov 25th - Dinner -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Dinner</h2>
+            <h3 class="event-subtitle">November 25th | 120 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Main Course</h4>
+                <ul class="menu-items">
+                    <li>Pav bhaji, Tawa Pulav, Raita</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Dessert & Beverage</h4>
+                <ul class="menu-items">
+                    <li>Garam Gulab Jamun, vanilla ice cream with chocolate sauce, Coffee</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+    
+    <!-- Page 10: Nov 27th - Grand Reception Dinner -->
+    <div class="poster-page">
+        <header class="page-header">
+            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+        </header>
+        <main class="menu-content">
+            <h2 class="event-title">Grand Reception Dinner</h2>
+            <h3 class="event-subtitle">November 27th | 400 Pax</h3>
+
+            <div class="menu-category">
+                <h4 class="category-title">Soup</h4>
+                <ul class="menu-items">
+                    <li>Tomato, Manchow</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Welcome Drinks</h4>
+                <ul class="menu-items">
+                    <li>Peru chilli, Mix fruit punch, Blue lagoon, virgin mojito</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Live Sweets</h4>
+                <ul class="menu-items">
+                    <li>Tawa Mehfil, Malai ghewar, Dryfruit cake, coffee rasagulla</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Starters & Farsan</h4>
+                <ul class="menu-items">
+                    <li>Barbeque 3 types (Paneer, baby corn, pineapple) (Starter)</li>
+                    <li>Italian Boat, Papad Pudina delight (Farsan)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Main Indian Course</h4>
+                <ul class="menu-items">
+                    <li>Paneer Mumtaz, Veg Bhoona, Live Tawa Subji (Sabji)</li>
+                    <li>Jeera Rice, Dal Tadka (Rice/Dal)</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Breads</h4>
+                <ul class="menu-items">
+                    <li>Fulka, Rumali Roti, Baby Naan (Confirm this!)</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Global & Regional</h4>
+                <ul class="menu-items">
+                    <li>Gravy Machurian, Hakka noodles, shezwan Rice (Chinese)</li>
+                    <li>Pizza, Pasta 2 types, Nachos, Tacos (Italian)</li>
+                    <li>Sabudana wada, Koshimbir (Maharashtrian)</li>
+                    <li>Bahubali dosa, Thatte Idli, 2 types of chutney (South Indian)</li>
+                </ul>
+            </div>
+
+            <div class="menu-category">
+                <h4 class="category-title">Dessert & Fruit</h4>
+                <ul class="menu-items">
+                    <li>Butter scotch Ice Cream, kesar Rajbhog Ice Cream</li>
+                    <li>3 Indian Fruits, 2 Imported Fruits</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Beverages & Digestives</h4>
+                <ul class="menu-items">
+                    <li>Coffee, espresso, Masala paan</li>
+                </ul>
+            </div>
+            
+            <div class="menu-category">
+                <h4 class="category-title">Sides</h4>
+                <ul class="menu-items">
+                    <li>Fresh green salad, aachar, chutney, Mukhwas</li>
+                </ul>
+            </div>
+        </main>
+        <footer class="page-footer">
+            Wedding Menu
+        </footer>
+    </div>
+
+</body>
+</html>
