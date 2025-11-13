@@ -313,54 +313,131 @@ async function renderSite() {
 }
 
 window.addEventListener('load', async function () {
-  // Confetti animation for loading screen
-  function startConfetti() {
+  // Flower petal shower animation for loading screen
+  function startFlowerShower() {
     const canvas = document.getElementById('confetti-canvas');
     if (!canvas) return () => {};
     const ctx = canvas.getContext('2d');
     let W = window.innerWidth, H = window.innerHeight;
     canvas.width = W; canvas.height = H;
-    let confetti = [];
-    const colors = ['#D4AF37', '#B8860B', '#F5E6E8', '#8B0000', '#2C3E50', '#FFF8F0'];
-    for (let i = 0; i < 80; i++) {
-      confetti.push({
+    // Petal colors and shapes
+    const petals = [];
+    const petalColors = ['#F5E6E8', '#FFD1DC', '#FFB7B2', '#F7CAC9', '#D4AF37', '#B8860B'];
+    const petalCount = 200;
+    for (let i = 0; i < petalCount; i++) {
+      petals.push({
         x: Math.random() * W,
-        y: Math.random() * H - H,
-        r: 6 + Math.random() * 8,
-        d: 10 + Math.random() * 20,
-        color: colors[Math.floor(Math.random() * colors.length)],
-        tilt: Math.random() * 10 - 10,
-        tiltAngle: 0,
-        tiltAngleInc: (Math.random() * 0.07) + 0.05
+        y: Math.random() * -H,
+        r: 12 + Math.random() * 10,
+        color: petalColors[Math.floor(Math.random() * petalColors.length)],
+        angle: Math.random() * Math.PI * 2,
+        speed: 1.2 + Math.random() * 5,
+        sway: Math.random() * 40 + 20,
+        swaySpeed: 0.01 + Math.random() * 0.02,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.02
       });
     }
-    let angle = 0, tiltAngle = 0, animId;
+    // Confetti
+    const confetti = [];
+    const confettiColors = ['#D4AF37', '#B8860B', '#F5E6E8', '#8B0000', '#2C3E50', '#FFF8F0', '#FFD1DC', '#FFB7B2'];
+    const confettiCount = 120;
+    for (let i = 0; i < confettiCount; i++) {
+      confetti.push({
+        x: Math.random() * W,
+        y: Math.random() * -H,
+        w: 6 + Math.random() * 8,
+        h: 10 + Math.random() * 12,
+        color: confettiColors[Math.floor(Math.random() * confettiColors.length)],
+        angle: Math.random() * Math.PI * 2,
+        speed: 2 + Math.random() * 4,
+        sway: Math.random() * 40 + 20,
+        swaySpeed: 0.01 + Math.random() * 0.02,
+        rot: Math.random() * Math.PI * 2,
+        rotSpeed: (Math.random() - 0.5) * 0.08
+      });
+    }
+    let animId;
+    function drawPetal(p) {
+      ctx.save();
+      ctx.translate(p.x + Math.sin(p.angle) * p.sway, p.y);
+      ctx.rotate(p.rot);
+      // Draw a flower with 4-5 petals
+      const petalCount = 4 + Math.floor(p.r) % 2; // 4 or 5
+      for (let i = 0; i < petalCount; i++) {
+        ctx.save();
+        ctx.rotate((Math.PI * 2 * i) / petalCount);
+        ctx.beginPath();
+        ctx.moveTo(0, 0);
+        ctx.bezierCurveTo(-p.r * 0.2, -p.r * 0.7, p.r * 0.2, -p.r * 0.7, 0, 0);
+        ctx.bezierCurveTo(p.r * 0.5, p.r * 0.7, -p.r * 0.5, p.r * 0.7, 0, 0);
+        ctx.fillStyle = p.color;
+        ctx.globalAlpha = 0.85;
+        ctx.shadowColor = p.color;
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+        ctx.restore();
+      }
+      // Optionally, add a yellow center
+      ctx.beginPath();
+      ctx.arc(0, 0, p.r * 0.18, 0, Math.PI * 2);
+      ctx.fillStyle = '#FFD700';
+      ctx.globalAlpha = 0.7;
+      ctx.shadowBlur = 0;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
+    function drawConfetti(c) {
+      ctx.save();
+      ctx.translate(c.x + Math.sin(c.angle) * c.sway, c.y);
+      ctx.rotate(c.rot);
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.rect(-c.w/2, -c.h/2, c.w, c.h);
+      ctx.fillStyle = c.color;
+      ctx.globalAlpha = 0.85;
+      ctx.shadowColor = c.color;
+      ctx.shadowBlur = 4;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.restore();
+    }
     function draw() {
       ctx.clearRect(0, 0, W, H);
+      // Draw petals (flowers)
+      for (let i = 0; i < petals.length; i++) {
+        drawPetal(petals[i]);
+      }
+      // Draw confetti
       for (let i = 0; i < confetti.length; i++) {
-        let c = confetti[i];
-        ctx.beginPath();
-        ctx.lineWidth = c.r;
-        ctx.strokeStyle = c.color;
-        ctx.moveTo(c.x + c.tilt + c.r / 3, c.y);
-        ctx.lineTo(c.x + c.tilt, c.y + c.d / 2);
-        ctx.stroke();
+        drawConfetti(confetti[i]);
       }
       update();
       animId = requestAnimationFrame(draw);
     }
     function update() {
-      angle += 0.01;
-      tiltAngle += 0.1;
+      for (let i = 0; i < petals.length; i++) {
+        let p = petals[i];
+        p.y += p.speed;
+        p.angle += p.swaySpeed;
+        p.rot += p.rotSpeed;
+        if (p.y > H + 20) {
+          p.x = Math.random() * W;
+          p.y = -20;
+          p.angle = Math.random() * Math.PI * 2;
+        }
+      }
       for (let i = 0; i < confetti.length; i++) {
         let c = confetti[i];
-        c.y += (Math.cos(angle + c.d) + 2 + c.r / 2) * 0.8;
-        c.x += Math.sin(angle);
-        c.tiltAngle += c.tiltAngleInc;
-        c.tilt = Math.sin(c.tiltAngle) * 15;
-        if (c.y > H) {
+        c.y += c.speed;
+        c.angle += c.swaySpeed;
+        c.rot += c.rotSpeed;
+        if (c.y > H + 20) {
           c.x = Math.random() * W;
-          c.y = -10;
+          c.y = -20;
+          c.angle = Math.random() * Math.PI * 2;
         }
       }
     }
@@ -378,7 +455,7 @@ window.addEventListener('load', async function () {
   }
 
   const loadingScreen = document.getElementById('loadingScreen');
-  const stopConfetti = startConfetti();
+  const stopFlowerShower = startFlowerShower();
   await loadPartials();
   await renderSite();
   // Once partials + data are in DOM, init UI and animations
@@ -390,13 +467,13 @@ window.addEventListener('load', async function () {
         opacity: 0, duration: 0.5,
         onComplete: () => {
           loadingScreen.style.display = 'none';
-          if (stopConfetti) stopConfetti();
+          if (stopFlowerShower) stopFlowerShower();
           initializeAnimations();
         }
       });
     } else if (loadingScreen) {
       loadingScreen.style.display = 'none';
-      if (stopConfetti) stopConfetti();
+      if (stopFlowerShower) stopFlowerShower();
     }
-  }, 2000);
+  }, 4000);
 });
