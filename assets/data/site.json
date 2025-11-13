@@ -91,7 +91,7 @@
       {
         "title": "Cottage Rooms (11xx Series)",
         "rooms": [
-          { "number": "1101", "label": "Ajaykumar family-core 4 + Kid", "type": "Luxury" },
+          { "number": "1101", "label": "Ajaykumar family-core 4 + Kids", "type": "Luxury" },
           { "number": "1102", "label": "Amitkumar, Prerna, Arnav, Sweety, Priham", "type": "Luxury" },
           { "number": "1103", "label": "AB, VB, Asmita, Madhavi, Bhumi", "type": "Luxury" },
           { "number": "1110", "label": "YM, Nutanben, Utkarsh, Ruchita", "type": "Standard" },
