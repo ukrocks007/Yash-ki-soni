@@ -1,13 +1,7 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
-  ],
   "routes": [
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/partials/(.*)", "dest": "/partials/$1" },
-    { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|pdf|mp4|webm|woff|woff2|ttf))", "dest": "/$1" },
-    { "src": "/(.*\\.html)", "dest": "/$1" },
-    { "src": "/", "dest": "/index.html" }
+    { "handle": "filesystem" },
+    { "src": "/(.*)", "dest": "/index.html" }
   ]
 }
