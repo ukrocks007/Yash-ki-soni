@@ -152,10 +152,171 @@ function initializeUI() {
 }
 
 // Loading screen control and boot sequence
+async function fetchSiteData() {
+  try {
+    const res = await fetch('/assets/data/site.json', { cache: 'no-cache' });
+    if (!res.ok) throw new Error(`Failed to load site.json: ${res.status}`);
+    return await res.json();
+  } catch (e) {
+    console.error(e);
+    return null;
+  }
+}
+
+function renderHero(data) {
+  if (!data?.hero) return;
+  const { subtitle, title, date, description, ctas } = data.hero;
+  const root = document.querySelector('#home');
+  if (!root) return;
+  const sub = root.querySelector('.hero-subtitle');
+  const h1 = root.querySelector('.hero-title');
+  const d = root.querySelector('.hero-date');
+  const desc = root.querySelector('.hero-description');
+  const ctaWrap = root.querySelector('.cta-buttons');
+  if (sub) sub.textContent = subtitle || '';
+  if (h1) h1.textContent = title || '';
+  if (d) d.textContent = date || '';
+  if (desc) desc.textContent = description || '';
+  if (ctaWrap && Array.isArray(ctas)) {
+    ctaWrap.innerHTML = '';
+    ctas.forEach((cta) => {
+      const a = document.createElement('a');
+      a.href = cta.href || '#';
+      a.className = `btn ${cta.variant === 'secondary' ? 'btn-secondary' : 'btn-primary'}`;
+      a.innerHTML = `${cta.icon ? `<i class="fas ${cta.icon}"></i> ` : ''}${cta.label || ''}`;
+      ctaWrap.appendChild(a);
+    });
+  }
+}
+
+function renderTimeline(data) {
+  if (!data?.timeline) return;
+  const { title, description, events } = data.timeline;
+  const section = document.querySelector('#timeline');
+  if (!section) return;
+  const titleEl = section.querySelector('.section-title');
+  const descEl = section.querySelector('.section-description');
+  if (titleEl) titleEl.textContent = title || '';
+  if (descEl) descEl.textContent = description || '';
+  const container = section.querySelector('.timeline');
+  if (!container || !Array.isArray(events)) return;
+  container.innerHTML = events.map((ev, idx) => `
+    <div class="timeline-item fade-in">
+      <div class="timeline-content">
+        <div class="timeline-date">${ev.time || ''}</div>
+        <h3 class="timeline-title">${ev.title || ''}</h3>
+        <p class="timeline-description">${ev.description || ''}</p>
+      </div>
+      <div class="timeline-marker"></div>
+    </div>
+  `).join('');
+}
+
+function renderMenu(data) {
+  if (!data?.menu) return;
+  const { title, description, cards } = data.menu;
+  const section = document.querySelector('#menu');
+  if (!section) return;
+  const titleEl = section.querySelector('.section-title');
+  const descEl = section.querySelector('.section-description');
+  if (titleEl) titleEl.textContent = title || '';
+  if (descEl) descEl.textContent = description || '';
+  const grid = section.querySelector('.menu-grid');
+  if (!grid || !Array.isArray(cards)) return;
+  grid.innerHTML = cards.map(card => `
+    <div class="menu-card scale-in">
+      <div class="menu-card-header">
+        <h3 class="menu-card-title">${card.title || ''}</h3>
+        <p class="menu-card-subtitle">${card.subtitle || ''}</p>
+      </div>
+      ${Array.isArray(card.categories) ? card.categories.map(cat => `
+        <div class="menu-category">
+          <h4 class="menu-category-title">${cat.title || ''}</h4>
+          <ul class="menu-items">
+            ${(cat.items || []).map(it => `<li>${it}</li>`).join('')}
+          </ul>
+        </div>
+      `).join('') : ''}
+    </div>
+  `).join('');
+}
+
+function renderRooms(data) {
+  if (!data?.rooms) return;
+  const { title, description, sections, notes } = data.rooms;
+  const section = document.querySelector('#rooms');
+  if (!section) return;
+  const titleEl = section.querySelector('.section-title');
+  const descEl = section.querySelector('.section-description');
+  if (titleEl) titleEl.textContent = title || '';
+  if (descEl) descEl.textContent = description || '';
+  const grid = section.querySelector('.room-grid');
+  if (grid && Array.isArray(sections)) {
+    grid.innerHTML = sections.map(sec => `
+      <div class="room-section fade-in">
+        <h3 class="room-section-title">${sec.title || ''}</h3>
+        <ul class="room-list">
+          ${(sec.rooms || []).map(r => `
+            <li><span class="room-number">${r.number}:</span> ${r.label}${r.type ? ` <span class="room-type">(${r.type})</span>` : ''}</li>
+          `).join('')}
+        </ul>
+      </div>
+    `).join('');
+  }
+  // Notes block
+  const oldNotes = Array.from(section.querySelectorAll('.section-header')).slice(1);
+  oldNotes.forEach(n => n.remove());
+  if (Array.isArray(notes) && notes.length) {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'section-header fade-in';
+    wrapper.style.marginTop = '3rem';
+    wrapper.innerHTML = `
+      <h3 style="color: var(--primary-gold); margin-bottom: 1rem;">Important Notes</h3>
+      <div style="background: white; padding: 2rem; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); text-align: left; max-width: 600px; margin: 0 auto;">
+        <ul style="list-style: disc; padding-left: 2rem; color: var(--text-dark);">
+          ${notes.map(n => `<li>${n}</li>`).join('')}
+        </ul>
+      </div>
+    `;
+    section.appendChild(wrapper);
+  }
+}
+
+function renderFooter(data) {
+  if (!data?.contact) return;
+  const { dates, map, phones } = data.contact;
+  const footer = document.querySelector('footer#contact');
+  if (!footer) return;
+  const info = footer.querySelector('.contact-info');
+  if (!info) return;
+  const items = [];
+  if (dates) {
+    items.push(`<div class="contact-item"><i class="fas fa-calendar-alt"></i><span>${dates}</span></div>`);
+  }
+  if (map?.url) {
+    items.push(`<div class="contact-item"><i class="fas fa-map-marker-alt"></i><a class="map-link" href="${map.url}" target="_blank" rel="noopener" aria-label="Open location in Google Maps (opens in a new tab)">${map.label || 'View on Map'} <i class="fas fa-up-right-from-square icon-external" aria-hidden="true"></i></a></div>`);
+  }
+  (phones || []).forEach(p => {
+    items.push(`<div class="contact-item"><i class="fas fa-phone"></i><a class="phone-link" href="tel:${p.tel || p.number}" aria-label="Call ${p.name}">${p.name} — ${p.number}</a></div>`);
+  });
+  info.innerHTML = items.join('');
+}
+
+async function renderSite() {
+  const data = await fetchSiteData();
+  if (!data) return;
+  renderHero(data);
+  renderTimeline(data);
+  renderMenu(data);
+  renderRooms(data);
+  renderFooter(data);
+}
+
 window.addEventListener('load', async function () {
   const loadingScreen = document.getElementById('loadingScreen');
   await loadPartials();
-  // Once partials are in DOM, init UI and animations
+  await renderSite();
+  // Once partials + data are in DOM, init UI and animations
   initializeUI();
 
   setTimeout(() => {

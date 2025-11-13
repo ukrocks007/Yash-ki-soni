@@ -1,0 +1,144 @@
+{
+  "hero": {
+    "subtitle": "You're Invited to Celebrate",
+    "title": "Yash & Soniya",
+    "date": "November 24-25, 2025",
+    "description": "Join us for a magical celebration filled with love, laughter, and unforgettable moments. Two hearts becoming one in a grand celebration of love and tradition.",
+    "ctas": [
+      { "label": "View Schedule", "href": "#timeline", "icon": "fa-calendar", "variant": "primary" },
+      { "label": "Explore Menu", "href": "#menu", "icon": "fa-utensils", "variant": "secondary" }
+    ]
+  },
+  "timeline": {
+    "title": "Wedding Timeline",
+    "description": "A detailed schedule of our two-day celebration filled with traditions, ceremonies, and joyous moments.",
+    "events": [
+      { "time": "November 24th", "title": "Arrival & Lunch", "description": "Welcome to our celebration! Guests arrive and enjoy a traditional lunch featuring Gujarati specialties and regional delicacies. The festivities begin with warm hospitality." },
+      { "time": "3:00 PM - 5:00 PM", "title": "Ganesh & Pithi Ceremony", "description": "Sacred rituals begin with Ganesh Puja followed by the vibrant Pithi ceremony. A time of blessings, turmeric applications, and joyful family traditions." },
+      { "time": "4:00 PM - 6:00 PM", "title": "Hi-Tea Service", "description": "Relax and mingle with delicious snacks, chaats, and refreshing beverages. Perfect time to connect with family and friends." },
+      { "time": "7:00 PM - 10:30 PM", "title": "Sangeet & Dinner", "description": "The night comes alive with music, dance, and performances! Enjoy a lavish dinner with live counters, international cuisines, and endless entertainment." },
+      { "time": "November 25th - 7:00 AM", "title": "Gotraj Pooja & Pallu", "description": "Dawn breaks with sacred ceremonies. Traditional rituals marking the beginning of the wedding day with family blessings and prayers." },
+      { "time": "8:00 AM - 10:00 AM", "title": "Wedding Breakfast", "description": "Start the special day with an elaborate breakfast featuring South Indian delicacies, Gujarati farsan, fresh juices, and traditional sweets." },
+      { "time": "11:34 AM", "title": "Wedding Muhurat", "description": "The most sacred moment! Witness the beautiful wedding ceremony as Yash and Soniya take their vows in the auspicious muhurat time." },
+      { "time": "5:49 PM", "title": "Sunset Varmala", "description": "A magical moment as the couple exchanges garlands during the golden hour. Capture this beautiful ritual against the sunset backdrop." },
+      { "time": "8:00 PM - 9:00 PM", "title": "Bidai Ceremony", "description": "An emotional and beautiful farewell as the bride begins her new journey. A traditional ceremony filled with love, tears, and blessings." }
+    ]
+  },
+  "menu": {
+    "title": "Culinary Journey",
+    "description": "Experience a gastronomic adventure with 10+ distinct dining experiences featuring live counters, regional specialties, and international cuisines.",
+    "cards": [
+      {
+        "title": "Welcome Lunch",
+        "subtitle": "November 24th • 120 Guests",
+        "categories": [
+          { "title": "Sweets", "items": ["Daal Badam Sheera", "Angoori Rabdi", "Karachi Pista Barfi"] },
+          { "title": "Main Course", "items": ["Bhendi Masala", "Dum Aloo", "Dewani Handi", "Steam Rice & Regular Dal"] },
+          { "title": "Starters & Sides", "items": ["Gujarati Khandhavi", "Sandwich Khaman", "Fresh Green Salad", "Fulka, Puri"] }
+        ]
+      },
+      {
+        "title": "Sangeet Feast",
+        "subtitle": "November 24th • 150 Guests",
+        "categories": [
+          { "title": "Live Counters", "items": ["Pani Puri & Oli Bhel", "Pizza (Jain + Regular)", "Pasta White & Red", "Masala Dosa Counter"] },
+          { "title": "Regional Specialties", "items": ["Amritsari Chole Bhature", "Matka Biryani (Jain)", "Thalepeeth with Loni", "Manchurian Idli"] },
+          { "title": "Desserts", "items": ["Mix Dryfruit Halwa", "Sizzling Brownie", "Dollar Jalebi", "Almond Basket"] }
+        ]
+      },
+      {
+        "title": "Wedding Breakfast",
+        "subtitle": "November 25th • 150 Guests",
+        "categories": [
+          { "title": "South Indian", "items": ["Steam Idli & Medu Wada", "Sambhar & Chutney", "Puneri Misal"] },
+          { "title": "Gujarati Delights", "items": ["Lamba Fafda", "Papaya Chutney", "Khakra with Ghee", "Club Sandwich"] },
+          { "title": "Beverages", "items": ["Fresh Orange Juice", "Masala Milk", "Tea & Coffee"] }
+        ]
+      },
+      {
+        "title": "Wedding Lunch",
+        "subtitle": "November 25th • 250 Guests",
+        "categories": [
+          { "title": "Live Soup Station", "items": ["Hot & Sour", "Tomato Basil", "Kawsouy Special"] },
+          { "title": "Main Course", "items": ["Paneer Tikka Masala", "Veg Kolhapuri", "Double B (Kathol)", "Jeera Rice & Dal Tadka"] },
+          { "title": "Premium Desserts", "items": ["Rabdi Malpua", "American Dryfruit Ice Cream", "Fresh Fruits Selection"] }
+        ]
+      },
+      {
+        "title": "Grand Reception",
+        "subtitle": "November 27th • 400 Guests",
+        "categories": [
+          { "title": "Welcome Drinks", "items": ["Peru Chilli", "Mix Fruit Punch", "Blue Lagoon", "Virgin Mojito"] },
+          { "title": "Live Counters", "items": ["BBQ Station (3 types)", "Pizza & Pasta Bar", "Bahubali Dosa Counter", "Tawa Mehfil Sweets"] },
+          { "title": "International Cuisine", "items": ["Chinese: Manchurian & Noodles", "Italian: Nachos & Tacos", "Indian: Live Tawa Subji", "Maharashtrian: Sabudana Wada"] }
+        ]
+      },
+      {
+        "title": "Evening Hi-Tea",
+        "subtitle": "Daily Service • 120 Guests",
+        "categories": [
+          { "title": "Snacks & Chaat", "items": ["SPDP & Kanda Bhaji", "Sweet Corn Bhel", "Moongdal Chilla", "Aloo Kachori"] },
+          { "title": "Beverages", "items": ["Masala Tea", "Filter Coffee", "Virgin Mojito", "Fresh Lime Water"] },
+          { "title": "Bakery Items", "items": ["Malpani Khari", "Assorted Biscuits", "Fresh Baked Goods"] }
+        ]
+      }
+    ]
+  },
+  "rooms": {
+    "title": "Room Allocation",
+    "description": "Your comfortable stay arrangements at the resort. Please coordinate with resort staff for luggage assistance.",
+    "sections": [
+      {
+        "title": "Cottage Rooms (11xx Series)",
+        "rooms": [
+          { "number": "1101", "label": "Ajaykumar family-core 4 + Kid", "type": "Luxury" },
+          { "number": "1102", "label": "Amitkumar, Prerna, Arnav, Sweety, Priham", "type": "Luxury" },
+          { "number": "1103", "label": "AB, VB, Asmita, Madhavi, Bhumi", "type": "Luxury" },
+          { "number": "1110", "label": "YM, Nutanben, Utkarsh, Ruchita", "type": "Standard" },
+          { "number": "1132", "label": "Yash, Ajaykumar, Piyush, Sid, Rk, Ranka", "type": "Suite" },
+          { "number": "1131", "label": "Sanjay, Smita, Prakash, Chitraben, Maa", "type": "Suite" },
+          { "number": "1118", "label": "Ashokkaka (3), Sharmilabhabhi", "type": "Standard" },
+          { "number": "1116", "label": "Ravikaka (2), Rohan, Meenabhabhi", "type": "Standard" },
+          { "number": "1108", "label": "Vahini, Vikrant, Sayali, Pushpa + 1", "type": "Standard" },
+          { "number": "1122", "label": "Rahul (3) + Subhashbhai", "type": "Standard" },
+          { "number": "1123", "label": "Swapnil (3), Sunandabhabhi", "type": "Standard" },
+          { "number": "1115", "label": "Alpesh (4) + Bhabhi", "type": "Standard" },
+          { "number": "1112", "label": "Sarika (2) + Priya (2)", "type": "Standard" },
+          { "number": "1114", "label": "Shubhangiben (4)", "type": "Standard" }
+        ]
+      },
+      {
+        "title": "Tent Rooms (22xx Series)",
+        "rooms": [
+          { "number": "2201-2203", "label": "Soniya Friends Group" },
+          { "number": "2212-2216", "label": "Soniya Friends Group" },
+          { "number": "2204-2209", "label": "Yash Friends Group" },
+          { "number": "2210-2211", "label": "Yash Friends Group" },
+          { "number": "2218", "label": "Sudhir bhai +4" },
+          { "number": "2219", "label": "Poonam(2), Rakhi(2)" },
+          { "number": "2220", "label": "Makeup Artists" },
+          { "number": "2221", "label": "Photographers" },
+          { "number": "2222", "label": "Vidhikar, Deepak bhai" },
+          { "number": "2223", "label": "Caterer Staff" }
+        ]
+      }
+    ],
+    "notes": [
+      "Check-in starts from arrival on November 24th",
+      "Resort staff will assist with luggage handling",
+      "Room maps available at reception desk",
+      "For any room-related queries, contact resort management"
+    ]
+  },
+  "contact": {
+    "dates": "November 24-25, 2025",
+    "map": {
+      "label": "The Campolian Club",
+      "url": "https://maps.app.goo.gl/15xLW2ZBpdZejFf88"
+    },
+    "phones": [
+      { "name": "Utkarsh", "number": "9168054254", "tel": "+919168054254" },
+      { "name": "Piyush", "number": "8793386494", "tel": "+918793386494" }
+    ]
+  }
+}
