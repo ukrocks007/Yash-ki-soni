@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "outputDirectory": ".",
   "builds": [
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "index.html", "use": "@vercel/static" },
+    { "src": "assets/**", "use": "@vercel/static" },
+    { "src": "partials/**", "use": "@vercel/static" },
+    { "src": "*.{html,css,js,png,jpg,jpeg,gif,svg,ico,pdf,mp4,webm,woff,woff2,ttf}", "use": "@vercel/static" }
   ],
   "routes": [
     { "handle": "filesystem" },
