@@ -4,17 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yash & Soniya - Wedding Menu</title>
+    <title>Yash & Soniya - Wedding Menu (Bilingual)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@400;700&family=Noto+Sans+Devanagari:wght@400;700&display=swap"
         rel="stylesheet">
     <style>
-        /* PDF & Print Styling */
+        /* --- PDF & Print Styling --- */
         @media print {
             body {
-                /* Ensures colors and backgrounds print correctly */
                 -webkit-print-color-adjust: exact;
                 print-color-adjust: exact;
                 margin: 0;
@@ -22,92 +21,133 @@
             }
 
             .poster-page {
-                /* This is the key: forces a new page after each event */
                 page-break-after: always;
                 margin: 0;
                 box-shadow: none;
                 border: none;
             }
+
+            /* Hide Navigation in Print */
+            .language-nav {
+                display: none !important;
+            }
+            
+            /* Hide spacing divs in print */
+            .section-spacer {
+                display: none;
+            }
         }
 
-        /* Body & Layout Setup */
+        /* --- Body & Layout Setup --- */
         body {
             background-color: #F0F0F0;
-            /* Grey background for the 'desktop' view */
-            font-family: 'Lato', sans-serif;
+            font-family: 'Lato', 'Noto Sans Devanagari', sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             color: #333333;
+            padding-top: 60px; /* Space for fixed nav */
         }
 
-        /* Page Styling (A4 Portrait - 842px x 1191px at 96 DPI) */
+        /* --- Navigation Bar --- */
+        .language-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .nav-btn {
+            background-color: #B48C2A;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Lato', sans-serif;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .nav-btn:hover {
+            background-color: #8C6B1E;
+        }
+
+        .section-spacer {
+            height: 50px;
+            width: 100%;
+        }
+
+        /* --- Page Styling (A4 Portrait) --- */
         .poster-page {
             width: 842px;
             min-height: 1191px;
             background-color: #FFFBF5;
-            /* A warm, elegant cream background */
             margin: 20px;
-            /* Optimized padding for A4 fit */
             padding: 50px 70px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border: 1px solid #E0DBCF;
             box-sizing: border-box;
-
-            /* Flex layout to push footer down */
             display: flex;
             flex-direction: column;
+            position: relative;
         }
 
-        /* --- 1. Consistent Page Header --- */
+        /* Headers */
         .page-header {
             text-align: center;
             border-bottom: 2px solid #B48C2A;
-            /* Elegant Gold */
             padding-bottom: 15px;
             margin-bottom: 30px;
         }
 
         .wedding-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
             font-size: 24px;
             font-weight: 600;
             color: #B48C2A;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             margin: 0;
         }
 
-        /* --- 2. Event Title Block --- */
         .event-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
             font-size: 56px;
-            /* Large and attractive */
             font-weight: 700;
             color: #333;
             text-align: center;
             margin: 0;
+            line-height: 1.1;
         }
 
         .event-subtitle {
-            font-family: 'Lato', sans-serif;
+            font-family: 'Lato', 'Noto Sans Devanagari', sans-serif;
             font-size: 20px;
             font-weight: 400;
             color: #5D7A68;
-            /* Soft green accent */
             text-align: center;
-            margin: 10px 0 40px 0;
+            margin: 10px 0 30px 0;
             border-bottom: 1px solid #EAE6D9;
             padding-bottom: 20px;
             letter-spacing: 0.5px;
         }
 
-        /* --- 3. Menu Content --- */
+        /* Content */
         .menu-content {
             flex-grow: 1;
-            /* Pushes footer down */
         }
 
         .menu-category {
@@ -115,21 +155,18 @@
         }
 
         .category-title {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
             font-size: 30px;
-            /* Clear category title */
             font-weight: 600;
             color: #B48C2A;
-            /* Gold */
             border-bottom: 1px solid #EAE6D9;
             padding-bottom: 10px;
-            margin-bottom: 18px;
+            margin-bottom: 15px;
         }
 
         .menu-items {
             font-size: 19px;
-            /* Very readable size */
-            line-height: 1.6;
+            line-height: 1.5;
             color: #444;
             padding-left: 10px;
             list-style: none;
@@ -140,7 +177,6 @@
             position: relative;
         }
 
-        /* Elegant bullet point */
         .menu-items li::before {
             content: '•';
             color: #B48C2A;
@@ -154,18 +190,18 @@
             margin-right: 5px;
         }
 
-        /* --- 4. Consistent Page Footer --- */
+        /* Footer */
         .page-footer {
             text-align: center;
-            margin-top: 40px;
-            font-family: 'Cormorant Garamond', serif;
+            margin-top: 30px;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
             font-size: 16px;
             color: #aaa;
             border-top: 1px solid #EAE6D9;
             padding-top: 20px;
         }
 
-        /* --- 5. Timeline Page Specific Styles --- */
+        /* Timeline Styles */
         .timeline-container {
             flex-grow: 1;
         }
@@ -175,8 +211,8 @@
         }
 
         .timeline-day-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
+            font-size: 32px;
             font-weight: 700;
             color: #333;
             border-bottom: 2px solid #5D7A68;
@@ -186,18 +222,18 @@
 
         .timeline-item {
             display: flex;
-            margin-bottom: 15px;
-            font-size: 19px;
+            margin-bottom: 12px;
+            font-size: 18px;
             border-bottom: 1px dotted #E0DBCF;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
 
         .timeline-time {
             font-weight: 700;
             color: #333;
-            width: 180px;
+            width: 160px;
             flex-shrink: 0;
-            font-family: 'Lato', sans-serif;
+            font-family: 'Lato', 'Noto Sans Devanagari', sans-serif;
         }
 
         .timeline-task {
@@ -207,28 +243,28 @@
 
         .timeline-task-manager {
             display: block;
-            font-size: 17px;
+            font-size: 16px;
             color: #5D7A68;
             font-style: italic;
-            margin-top: 5px;
+            margin-top: 4px;
         }
 
         .timeline-note {
-            font-size: 18px;
+            font-size: 17px;
             color: #8C5C2A;
             font-style: italic;
-            margin-top: 15px;
-            padding: 15px;
+            margin-top: 12px;
+            padding: 12px;
             background-color: #EAE6D9;
             border-radius: 8px;
-            line-height: 1.6;
+            line-height: 1.5;
         }
 
         .timeline-note-title {
             font-weight: 700;
             color: #333;
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-style: normal;
         }
 
@@ -239,14 +275,14 @@
         }
 
         .timeline-note li {
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
 
         /* Room Allocation Specific Styles */
         .room-section-container {
             display: flex;
-            gap: 30px;
-            margin-top: 20px;
+            gap: 25px;
+            margin-top: 10px;
         }
 
         .room-column {
@@ -255,11 +291,11 @@
         }
 
         .room-section h5 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
+            font-family: 'Cormorant Garamond', 'Noto Sans Devanagari', serif;
+            font-size: 22px;
             font-weight: 700;
             color: #5D7A68;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             border-bottom: 1px solid #B48C2A;
             padding-bottom: 5px;
         }
@@ -267,738 +303,668 @@
         .room-list {
             list-style: none;
             padding-left: 0;
-            font-size: 17px;
-            line-height: 1.6;
+            font-size: 15px; /* Adjusted for density */
+            line-height: 1.4;
         }
 
         .room-list li {
-            margin-bottom: 5px;
+            margin-bottom: 6px;
             color: #444;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            border-bottom: 1px dotted #eee;
+            padding-bottom: 2px;
         }
 
         .room-number {
             font-weight: 700;
             color: #B48C2A;
-            margin-right: 8px;
-            font-size: 18px;
+            margin-right: 6px;
+            font-size: 16px;
+            flex-shrink: 0;
         }
 
         .room-type {
-            font-size: 14px;
+            font-size: 13px;
             color: #8C5C2A;
             font-style: italic;
-            margin-left: 5px;
+            margin-left: 4px;
+        }
+
+        /* Side Badges */
+        .room-side {
+            font-size: 10px;
+            font-weight: 700;
+            margin-left: auto; /* Push to right */
+            padding: 2px 6px;
+            border-radius: 4px;
+            vertical-align: middle;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .groom-side {
+            background-color: #E3F2FD;
+            color: #1565C0;
+            border: 1px solid #BBDEFB;
+        }
+
+        .bride-side {
+            background-color: #FCE4EC;
+            color: #AD1457;
+            border: 1px solid #F8BBD0;
+        }
+        
+        .common-side {
+            background-color: #F5F5F5;
+            color: #616161;
+            border: 1px solid #E0E0E0;
+        }
+        
+        .bus-list {
+            font-size: 15px !important;
         }
     </style>
 </head>
 
 <body>
-    <!-- Page 1: NEW Master Event Timeline -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="timeline-container">
-            <h2 class="event-title">Master Event Timeline</h2>
-            <h3 class="event-subtitle">November 24th & 25th | Schedule & Logistics</h3>
 
-            <!-- DAY 1: NOV 24th -->
-            <div class="timeline-day-section">
-                <h4 class="timeline-day-title">November 24th - Monday</h4>
+    <!-- Navigation Bar
+    <div class="language-nav">
+        <a href="#english-section" class="nav-btn">Go to English Version</a>
+        <a href="#marathi-section" class="nav-btn">Go to Marathi Version</a>
+    </div> -->
 
-                <div class="timeline-item">
-                    <div class="timeline-time">Morning</div>
-                    <div class="timeline-task">**Bus Management & Departure**
-                        <span class="timeline-task-manager">Managers: Abhay, Vijay, Yatinkumar</span>
+    <!-- ENGLISH SECTION WRAPPER -->
+    <div id="english-section">
+
+        <!-- Page 1: Master Event Timeline (English) -->
+        <div class="poster-page">
+            <header class="page-header">
+                <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+            </header>
+            <main class="timeline-container">
+                <h2 class="event-title">Master Event Timeline</h2>
+                <h3 class="event-subtitle">November 24th & 25th | Schedule & Logistics</h3>
+
+                <!-- DAY 1: NOV 24th -->
+                <div class="timeline-day-section">
+                    <h4 class="timeline-day-title">November 24th - Monday</h4>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">Morning</div>
+                        <div class="timeline-task">**Bus Management & Departure**
+                            <span class="timeline-task-manager">Managers: Abhay, Vijay, Yatinkumar</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-note">
+                        <span class="timeline-note-title">Bus Arrangement (45 Seater)</span>
+                        <ul class="bus-list" style="font-size: 15px; line-height: 1.4; columns: 2;">
+                            <li>Yash, Smita, Sunju</li>
+                            <li>Pk, Chitraben</li>
+                            <li>YM, Nutanben, Ruchita</li>
+                            <li>VB, Madhavi</li>
+                            <li>AB, Asmita, bhumi</li>
+                            <li>Sweety Ben, Priham</li>
+                            <li>Prerna, Arnav</li>
+                            <li>Shubhangiben, Rajendra Shah, Priya, Tanmay</li>
+                            <li>Mayura, Aarti, Harshada</li>
+                            <li>Rakhi, Poonam, Sarika, Shweta</li>
+                            <li>Ravibhai & Vrushali bhabhi</li>
+                            <li>Vahini, Sayali</li>
+                            <li>Deepakbhai, Sharmila bhabhi</li>
+                            <li>Vidhikar</li>
+                        </ul>
+                        <span class="timeline-note-title" style="margin-top: 8px;">Bus Essentials:</span> 100 water bottles & 50 snacks packets.
+                    </div>
+
+                    <div class="timeline-item" style="margin-top: 15px;">
+                        <div class="timeline-time">Pre-Arrival</div>
+                        <div class="timeline-task">**Call Caterer** (from bus) to start prepping for Welcome Drinks.</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">Upon Arrival</div>
+                        <div class="timeline-task">Handover **Room Keys** & Coordinate **Luggage Shifting** with Resort staff.</div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">Lunch Service</div>
+                        <div class="timeline-task">**Lunch Management**
+                            <span class="timeline-task-manager">Managers: Prakash (PK), Yatinkumar (YM), Vijay, Rahul, Rajendra Shah.</span>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-time">3:00 PM - 5:00 PM</div>
+                        <div class="timeline-task">**Ganesh + Pithi Ceremony**
+                            <span class="timeline-task-manager">Managers: Chitraben, Nutanben, Mayura, Madhvi, Asmita</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">4:00 PM - 6:00 PM</div>
+                        <div class="timeline-task">**Hi-Tea Management**
+                            <span class="timeline-task-manager">Managers: PK, Yatinkumar (YM), Vijay (VB), Abhay (AB), Rahul.</span>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">7:00 PM - 10:30 PM</div>
+                        <div class="timeline-task">**Sangeet Ceremony** & Dinner Service
+                            <span class="timeline-task-manager">Dinner Tasting: PK, YM, VB.</span>
+                        </div>
                     </div>
                 </div>
-
-                <div class="timeline-note">
-                    <span class="timeline-note-title">Bus Arrangement (45 Seater)</span>
-                    <ul class="bus-list" style="font-size: 16px; line-height: 1.5; columns: 2;">
-                        <li>Yash, Smita, Sunju</li>
-                        <li>Pk, Chitraben</li>
-                        <li>YM, Nutanben, Ruchita</li>
-                        <li>VB, Madhavi</li>
-                        <li>AB, Asmita, bhumi</li>
-                        <li>Sweety Ben, Priham</li>
-                        <li>Prerna, Arnav</li>
-                        <li>Shubhangiben, Rajendra Shah, Priya, Tanmay</li>
-                        <li>Mayura, Aarti, Harshada</li>
-                        <li>Rakhi, Poonam, Sarika, Shweta</li>
-                        <li>Ravibhai & Vrushali bhabhi</li>
-                        <li>Vahini, Sayali</li>
-                        <li>Deepakbhai, Sharmila bhabhi</li>
-                        <li>Vidhikar</li>
-                    </ul>
-                    <span class="timeline-note-title" style="margin-top: 10px;">Bus Essentials:</span> 100 water bottles
-                    & 50 snacks packets.
-                </div>
-
-                <div class="timeline-item" style="margin-top: 20px;">
-                    <div class="timeline-time">Pre-Arrival</div>
-                    <div class="timeline-task">**Call Caterer** (from bus) to start prepping for Welcome Drinks.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">Upon Arrival</div>
-                    <div class="timeline-task">Handover **Room Keys** & Coordinate **Luggage Shifting** with Resort
-                        staff.</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">Lunch Service</div>
-                    <div class="timeline-task">**Lunch Management**
-                        <span class="timeline-task-manager">Managers: Prakash (PK), Yatinkumar (YM), Vijay, Rahul,
-                            Rajendra Shah.</span>
+                
+                <!-- DAY 2: NOV 25th -->
+                <div class="timeline-day-section">
+                    <h4 class="timeline-day-title" style="margin-top: 30px;">November 25th - Tuesday</h4>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">7:00 AM</div>
+                        <div class="timeline-task">**Gotraj Pooja** followed by **Pallu**.</div>
                     </div>
-                </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-time">3:00 PM - 5:00 PM</div>
-                    <div class="timeline-task">**Ganesh + Pithi Ceremony**
-                        <span class="timeline-task-manager">Managers: Chitraben, Nutanben, Mayura, Madhvi, Asmita</span>
+                    <div class="timeline-item">
+                        <div class="timeline-time">8:00 AM - 10:00 AM</div>
+                        <div class="timeline-task">**Breakfast Service**</div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">4:00 PM - 6:00 PM</div>
-                    <div class="timeline-task">**Hi-Tea Management**
-                        <span class="timeline-task-manager">Managers: PK, Yatinkumar (YM), Vijay (VB), Abhay (AB),
-                            Rahul.</span>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">10:15 AM - 11:15 AM</div>
+                        <div class="timeline-task">**Varghoda (Baarat)**</div>
                     </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">7:00 PM - 10:30 PM</div>
-                    <div class="timeline-task">**Sangeet Ceremony** & Dinner Service
-                        <span class="timeline-task-manager">Dinner Tasting: PK, YM, VB.</span>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">11:34 AM</div>
+                        <div class="timeline-task">**Wedding Muhurat**</div>
                     </div>
-                </div>
-            </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">12:30 PM - 3:00 PM</div>
+                        <div class="timeline-task">**Phere & Lunch**</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">4:00 PM - 6:00 PM</div>
+                        <div class="timeline-task">**Hi-Tea Service**</div>
+                    </div>
 
-            <!-- DAY 2: NOV 25th -->
-            <div class="timeline-day-section">
-                <h4 class="timeline-day-title" style="margin-top: 40px;">November 25th - Tuesday</h4>
+                    <div class="timeline-item">
+                        <div class="timeline-time">5:49 PM</div>
+                        <div class="timeline-task">**Sunset Varmala**</div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-time">7:00 PM</div>
+                        <div class="timeline-task">**Chaab Ritual**</div>
+                    </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-time">7:00 AM</div>
-                    <div class="timeline-task">**Gotraj Pooja** followed by **Pallu**.</div>
-                </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">7:00 PM - 8:30 PM</div>
+                        <div class="timeline-task">**Dinner Service**</div>
+                    </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-time">8:00 AM - 10:00 AM</div>
-                    <div class="timeline-task">**Breakfast Service**</div>
-                </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">8:00 PM - 9:00 PM</div>
+                        <div class="timeline-task">**Bidai Ceremony**</div>
+                    </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-time">10:15 AM - 11:15 AM</div>
-                    <div class="timeline-task">**Varghoda (Baarat)**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">11:34 AM</div>
-                    <div class="timeline-task">**Wedding Muhurat**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">12:30 PM - 3:00 PM</div>
-                    <div class="timeline-task">**Phere & Lunch**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">4:00 PM - 6:00 PM</div>
-                    <div class="timeline-task">**Hi-Tea Service**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">5:49 PM</div>
-                    <div class="timeline-task">**Sunset Varmala**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">7:00 PM</div>
-                    <div class="timeline-task">**Chaab Ritual**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">7:00 PM - 8:30 PM</div>
-                    <div class="timeline-task">**Dinner Service**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">8:00 PM - 9:00 PM</div>
-                    <div class="timeline-task">**Bidai Ceremony**</div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-time">Post-Bidai</div>
-                    <div class="timeline-task">Move **Luggage** (Rooms to Bus) with Hotel Staff help.</div>
-                </div>
-
-                <div class="timeline-note">
-                    <span class="timeline-note-title">Pooja Essentials (Nov 25th)</span>
-                    Flower Garland, Srifal Green, Limboo (12), Knife, Handkerchief, Nail, 1.25 rupee coin (Savva
-                    Rupiya).
-                </div>
-
-                <div class="timeline-note" style="margin-top: 15px;">
-                    <span class="timeline-note-title">Early Departure (From Campolian)</span>
-                    <ul>
-                        <li>**Ajaykumar:** Yash, Soniya, Karishma, Jairaj</li>
-                        <li>**Utkarsh:** Nutanben, Maa, Sweety Ben</li>
-                        <li>**Piyush:** Bhumi, Ruchita, Asmita, Madhavi</li>
-                    </ul>
-                </div>
-            </div>
-
-        </main>
-        <footer class="page-footer">
-            Page 1 | Master Event Timeline
-        </footer>
-    </div>
-
-    <!-- Page 2: Room Allocation -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Room Allocation</h2>
-            <h3 class="event-subtitle">November 24th Arrival | Cottage & Tent Assignments</h3>
-
-            <p style="text-align: center; margin-bottom: 25px; font-style: italic; color: #5D7A68; font-size: 18px;">
-                Please coordinate luggage with resort staff. Locate your room on the map provided upon arrival.
-            </p>
-
-            <div class="room-section-container">
-                <div class="room-column">
-                    <div class="room-section">
-                        <h5>Cottage Rooms (11xx Series)</h5>
-                        <ul class="room-list">
-                            <li><span class="room-number">1101:</span> Ajaykumar family-core 4 + Kid <span
-                                    class="room-type">(Lux)</span></li>
-                            <li><span class="room-number">1102:</span> Amitkumar, Prerna, Arnav, Sweety, Priham <span
-                                    class="room-type">(Lux)</span></li>
-                            <li><span class="room-number">1103:</span> AB, VB, Asmita, Madhavi, Bhumi (Bhumika) <span
-                                    class="room-type">(Lux)</span></li>
-                            <li><span class="room-number">1110:</span> YM, Nutanben, Utkarsh, Ruchita <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1132:</span> Yash, Ajaykumar, Piyush, Sid, Rk, Ranka <span
-                                    class="room-type">(Suite)</span></li>
-                            <li><span class="room-number">1131:</span> Sanjay, Smita, Prakash, Chitraben, Maa, Pushpa
-                                maushi <span class="room-type">(Suite)</span></li>
-                            <li><span class="room-number">1118:</span> Ashokkaka (3), Sharmilabhabhi <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1116:</span> Ravikaka (2), Rohan, Meenabhabhi <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1108:</span> Vahini, Vikrant, Sayali, Pushpa + 1 <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1122:</span> Rahul (3) + Subhashbhai <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1123:</span> Swapnil (3), Sunandabhabhi <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1115:</span> Alpesh (4) + Bhabhi <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1112:</span> Sarika (2) + Priya (2) <span
-                                    class="room-type">(Standard)</span></li>
-                            <li><span class="room-number">1114:</span> Shubhangiben (4) <span
-                                    class="room-type">(Standard)</span></li>
+                    <div class="timeline-item">
+                        <div class="timeline-time">Post-Bidai</div>
+                        <div class="timeline-task">Move **Luggage** (Rooms to Bus) with Hotel Staff help.</div>
+                    </div>
+                    
+                    <div class="timeline-note">
+                        <span class="timeline-note-title">Pooja Essentials (Nov 25th)</span>
+                        Flower Garland, Srifal Green, Limboo (12), Knife, Handkerchief, Nail, 1.25 rupee coin (Savva Rupiya).
+                    </div>
+                    
+                    <div class="timeline-note" style="margin-top: 10px;">
+                        <span class="timeline-note-title">Early Departure (From Campolian)</span>
+                        <ul style="font-size: 15px;">
+                            <li>**Ajaykumar:** Yash, Soniya, Karishma, Jairaj</li>
+                            <li>**Utkarsh:** Nutanben, Maa, Sweety Ben</li>
+                            <li>**Piyush:** Bhumi, Ruchita, Asmita, Madhavi</li>
                         </ul>
                     </div>
                 </div>
 
-                <div class="room-column">
-                    <div class="room-section">
-                        <h5>Tent Rooms (22xx Series)</h5>
-                        <ul class="room-list">
-                            <li><span class="room-number">2201-2203, 2212-2216:</span> Soniya Friends</li>
-                            <li><span class="room-number">2204-2209, 2210-2211:</span> Yash Friends</li>
-                            <li><span class="room-number">2218:</span> Sudhir bhai +4</li>
-                            <li><span class="room-number">2219:</span> Poonam(2), Rakhi(2)</li>
-                            <li><span class="room-number">2220:</span> Makeup artists</li>
-                            <li><span class="room-number">2221:</span> Photographers</li>
-                            <li><span class="room-number">2222:</span> Vidhikar, Deepak bhai</li>
-                            <li><span class="room-number">2223:</span> Caterer staff</li>
-                        </ul>
+            </main>
+            <footer class="page-footer">
+                Page 1 | Master Event Timeline
+            </footer>
+        </div>
+
+        <!-- Page 2: Room Allocation (English - UPDATED) -->
+        <div class="poster-page">
+            <header class="page-header">
+                <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+            </header>
+            <main class="menu-content">
+                <h2 class="event-title">Room Allocation</h2>
+                <h3 class="event-subtitle">November 24th Arrival | Cottage & Tent Assignments</h3>
+                
+                <!-- <p style="text-align: center; margin-bottom: 15px; font-style: italic; color: #5D7A68; font-size: 16px;">
+                    Please coordinate luggage with resort staff. Locate your room on the map provided upon arrival.
+                </p> -->
+
+                <div class="room-section-container">
+                    <div class="room-column">
+                        <div class="room-section">
+                            <h5>Cottage Rooms (11xx Series)</h5>
+                            <ul class="room-list">
+                                <li><span class="room-number">1101:</span> Ajaykumar family-core 4 + Kid <span class="room-type">(Lux)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1102:</span> Amitkumar, Prerna, Arnav, Sweety, Priham <span class="room-type">(Lux)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1103:</span> AB, VB, Asmita, Madhavi, Bhumi <span class="room-type">(Lux)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1105:</span> Prashant Supekar, Prajwal, Sandip... <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1106:</span> Dada, Nilesh, Tushar, Archit, Ishan <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1107:</span> Pratibha Khambekar, Dharmadhikari... <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1108:</span> Vahini, Vikrant, Sayali, Pushpa + 1 <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1110:</span> YM, Nutanben, Utkarsh, Ruchita <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1112:</span> Sarika (2) + Priya (2) <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1114:</span> Shubhangiben (4) <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1115:</span> Alpesh (4) + Harshada <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1116:</span> Ravikaka, Meenabhabhi <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1118:</span> Ashokkaka (3), Sharmilabhabhi <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1119:</span> Sudhir Poonam Rakhi <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1120:</span> Sudhir Poonam Rakhi <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1121:</span> Sopan Girme, Homkar Bhauji, Kumar <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1122:</span> Rahul (3) + Subhashbhai <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1123:</span> Swapnil (3), Sunandabhabhi <span class="room-type">(Std)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1124:</span> Dada Basale, Nitin Basale... <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1125:</span> Dipti, Sanju atya, Ranju atya, Minu <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1126:</span> Sopan Awasarkar, Anil Awasarkar... <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1127:</span> Madhuri Rode + 1, Jaya Basale, Mai <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1128:</span> Shrilekha, Hair Artist, Sanskriti... <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1129:</span> Gulab, Akhilesh, Anil, Anuj, Sunil <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1130:</span> Soniya, Shivani, Vaishali, Sangita <span class="room-type">(Std)</span> <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">1131:</span> Yash, Ajaykumar, Piyush, Akash <span class="room-type">(Suite)</span> <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">1132:</span> Sanjay, Smita, PK, Chitraben, Maa... <span class="room-type">(Suite)</span> <span class="room-side groom-side">Groom</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="room-column">
+                        <div class="room-section">
+                            <h5>Tent Rooms (22xx Series)</h5>
+                            <ul class="room-list">
+                                <li><span class="room-number">2201:</span> Chetak +1 & Akash +1 <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2202:</span> Divya, Mansi, Shreya, Akshata <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2203:</span> Yash Empty <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2204:</span> Nikaela, Sam, Luiza, Mukta <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2205:</span> Elion, Andy, Lucas <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2206:</span> Abhinav, Samar, Sachin, Shubham <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2207:</span> Akshay, Pranav, Akshay Kudale... <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2208:</span> Onkar, Karan, Sid, Ranka <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2209:</span> Hitesh, Jismon, Sumit Sarda... <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2210:</span> Yash Empty <span class="room-side groom-side">Groom</span></li>
+                                <li><span class="room-number">2211:</span> Soniya Empty <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2212:</span> Utkarsha, Shubhangi, Chaitali, Shital <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2214:</span> Smita, Piyusha, Rohit, Supriya <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2215:</span> Adesh, Shubhada, Vikram, Snehal <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2216:</span> Kartik Kamble, Vishwajeet Pawar... <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2218:</span> Omkar Chikane, Varun Landge <span class="room-side bride-side">Bride</span></li>
+                                <li><span class="room-number">2219:</span> Common Empty <span class="room-side common-side">Common</span></li>
+                                <li><span class="room-number">2220:</span> Photographer 1 <span class="room-side common-side">Common</span></li>
+                                <li><span class="room-number">2221:</span> Photographer 2 <span class="room-side common-side">Common</span></li>
+                                <li><span class="room-number">2222:</span> Vidhikar, Deepak bhai <span class="room-side common-side">Common</span></li>
+                                <li><span class="room-number">2223:</span> Caterer Staff <span class="room-side common-side">Common</span></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 2 | Room Allocation
-        </footer>
+            </main>
+            <footer class="page-footer">
+                Page 2 | Room Allocation
+            </footer>
+        </div>
+
+        <!-- Page 3-12: English Menu Content (Retaining existing structure) -->
+        <div class="poster-page">
+            <header class="page-header">
+                <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
+            </header>
+            <main class="menu-content">
+                <h2 class="event-title">Lunch</h2>
+                <h3 class="event-subtitle">November 24th - Monday | 120 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Sweets</h4><ul class="menu-items"><li>Daal badam sheera, Angoori Rabdi, Karachi pista Barfi</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Starters & Farsan</h4><ul class="menu-items"><li>Gujarati Khandhavi, Sandwich Khaman, Mutter Roll</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Main Indian Course</h4><ul class="menu-items"><li>Bhendi Masala, Dum Aloo, Dewani Handi, Steam Rice, Regular Dal</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Breads</h4><ul class="menu-items"><li>Fulka, Puri</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Sides & Refreshments</h4><ul class="menu-items"><li>Fresh Green Salad, Achar, Chutney, Mukhwas, Boondi Chass, Papad/Fryums</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Ganesh Event</h4><ul class="menu-items"><li>Mocktail, Dryfruit</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 3 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Hi Tea</h2><h3 class="event-subtitle">November 24th - Monday | 120 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Snacks/Chaat</h4><ul class="menu-items"><li>SPDP, Kanda Bhaji, Sweet corn bhel</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Bakery</h4><ul class="menu-items"><li>Malpani Khari, Biscuit</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Beverages</h4><ul class="menu-items"><li>Tea, coffee, Virgin Mojito</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 4 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Dinner & Sangeet</h2><h3 class="event-subtitle">November 24th - Monday | 150 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Soup</h4><ul class="menu-items"><li>Lemon Coriander (Jain), Manchow Soup (Regular)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Starters</h4><ul class="menu-items"><li>Paneer Chilli (Jain), Veg Cigar Roll (Regular)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Chaat</h4><ul class="menu-items"><li>Pani Puri, Oli bhel (Jain + Regular)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Indian Main</h4><ul class="menu-items"><li>Amritsari Chole, Bhature (Punjabi)</li><li>Matka Biryani (Jain)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Global & Regional</h4><ul class="menu-items"><li>Pizza (Jain + Regular), Pasta White & Red (Italian)</li><li>Thalepeeth, Loni, Dahi, Thecha, Aachar (Maharashtrian)</li><li>Masala Dosa, Manchurian Idli, 2 types of chutney (South Indian)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Dessert</h4><ul class="menu-items"><li>Mix Dryfruit Halwa, Almond Basket, Dollar Jalebi, and Sizzling Brownie with Vanilla ice cream</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Beverage</h4><ul class="menu-items"><li>Masala Milk</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 5 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Breakfast</h2><h3 class="event-subtitle">November 25th - Tuesday | 150 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Sweets</h4><ul class="menu-items"><li>Badam Halwa, Dollar Jalebi</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Hot Indian</h4><ul class="menu-items"><li>Puneri misal with slice, steam idli, Medu wada, Poha, Masala Moong, sambhar, chutney</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Farsan & Sides</h4><ul class="menu-items"><li>Lamba Fafda, Papaya chutney, yellow kadi, Club sandwich, barik shev, Kaju & Badam fried, Khakra ghee, peanut chutney, lemon</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Bakery & Bread</h4><ul class="menu-items"><li>Bread, butter, jam, Khari, biscuit</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Beverages</h4><ul class="menu-items"><li>Fresh orange juice, Tea, coffee, masala milk</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 6 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Varmala Service</h2><h3 class="event-subtitle">November 25th - Tuesday | Interim Service</h3>
+                <div class="menu-category"><h4 class="category-title">Quick Service</h4><ul class="menu-items"><li>Mocktail, dry fruit, and Starters from the lunch menu</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 7 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Lunch</h2><h3 class="event-subtitle">November 25th - Tuesday | 200-250 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Live Soup & Specialty</h4><ul class="menu-items"><li>Hot & sour, Tomato, Kawsouy</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Starters & Farsan</h4><ul class="menu-items"><li>Green peas cheese ball, Mexican Tart (Starters)</li><li>Alu wadi, Angoori Dahi wada (Farsan)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Main Indian Course</h4><ul class="menu-items"><li>Paneer Tikka Masala, Veg Kolhapuri, Double B (Kathol) (Sabji)</li><li>Jeera Rice, Dal Tadka (Jain + Regular) (Rice/Dal)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Breads</h4><ul class="menu-items"><li>Fulka, Laccha Paratha, Stuff Kulcha</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Sides & Refreshments</h4><ul class="menu-items"><li>Roasted Papad, Fresh Green Salad, Aachar, Chutney, Mukhwas, Masala Chass</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Dessert & Fruit</h4><ul class="menu-items"><li>Rabdi Malpua, Coconut Tender, White roasted barfi (Sweets)</li><li>American Dryfruit, Sweet paan (Ice Cream)</li><li>3 Indian Fruits, 2 Imported Fruits</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 8 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Baraat Swagat</h2><h3 class="event-subtitle">November 25th - Tuesday</h3>
+                <div class="menu-category"><h4 class="category-title">Beverages</h4><ul class="menu-items"><li>Berry Crush & Piñacolada cocktail, 200ml water bottles</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Snacks</h4><ul class="menu-items"><li>Samosa, Harabhara Kabab</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Sides</h4><ul class="menu-items"><li>4 types of dry fruits</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 9 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Hi Tea</h2><h3 class="event-subtitle">November 25th - Tuesday | 120 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Snacks</h4><ul class="menu-items"><li>Moongdal Chilla, Aloo kachori, Mix bhaji</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Beverages/Sides</h4><ul class="menu-items"><li>Tea, coffee, khari, biscuit</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 10 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Dinner</h2><h3 class="event-subtitle">November 25th - Tuesday | 120 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Main Course</h4><ul class="menu-items"><li>Pav bhaji, Tawa Pulav, Raita</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Dessert & Beverage</h4><ul class="menu-items"><li>Garam Gulab Jamun, vanilla ice cream with chocolate sauce, Coffee</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 11 | Wedding Menu</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1></header>
+            <main class="menu-content"><h2 class="event-title">Grand Reception Dinner</h2><h3 class="event-subtitle">November 27th | 400 Pax</h3>
+                <div class="menu-category"><h4 class="category-title">Soup</h4><ul class="menu-items"><li>Tomato, Manchow</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Welcome Drinks</h4><ul class="menu-items"><li>Peru chilli, Mix fruit punch, Blue lagoon, virgin mojito</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Live Sweets</h4><ul class="menu-items"><li>Tawa Mehfil, Malai ghewar, Dryfruit cake, coffee rasagulla</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Starters & Farsan</h4><ul class="menu-items"><li>Barbeque 3 types (Paneer, baby corn, pineapple) (Starter)</li><li>Italian Boat, Papad Pudina delight (Farsan)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Main Indian Course</h4><ul class="menu-items"><li>Paneer Mumtaz, Veg Bhoona, Live Tawa Subji (Sabji)</li><li>Jeera Rice, Dal Tadka (Rice/Dal)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Breads</h4><ul class="menu-items"><li>Fulka, Rumali Roti, <strong>Baby Naan (Confirm this!)</strong></li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Global & Regional</h4><ul class="menu-items"><li>Gravy Machurian, Hakka noodles, shezwan Rice (Chinese)</li><li>Pizza, Pasta 2 types, Nachos, Tacos (Italian)</li><li>Sabudana wada, Koshimbir (Maharashtrian)</li><li>Bahubali dosa, Thatte Idli, 2 types of chutney (South Indian)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Dessert & Fruit</h4><ul class="menu-items"><li>Butter scotch Ice Cream, kesar Rajbhog Ice Cream</li><li>3 Indian Fruits, 2 Imported Fruits</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Beverages & Digestives</h4><ul class="menu-items"><li>Coffee, espresso, Masala paan</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">Sides</h4><ul class="menu-items"><li>Fresh green salad, aachar, chutney, Mukhwas</li></ul></div>
+            </main>
+            <footer class="page-footer">Page 12 | Wedding Menu</footer>
+        </div>
     </div>
 
-    <!-- Page 3: Nov 24th - Lunch -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Lunch</h2>
-            <h3 class="event-subtitle">November 24th - Monday | 120 Pax</h3>
+    <div class="section-spacer"></div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Sweets</h4>
-                <ul class="menu-items">
-                    <li>Daal badam sheera, Angoori Rabdi, Karachi pista Barfi</li>
-                </ul>
-            </div>
+    <!-- MARATHI SECTION WRAPPER -->
+    <div id="marathi-section">
+        <!-- Page 13: Master Event Timeline (Marathi) -->
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="timeline-container"><h2 class="event-title">मुख्य कार्यक्रमांची वेळसूची</h2><h3 class="event-subtitle">२४ आणि २५ नोव्हेंबर | वेळापत्रक आणि व्यवस्थापन</h3>
+                <div class="timeline-day-section"><h4 class="timeline-day-title">२४ नोव्हेंबर - सोमवार</h4>
+                    <div class="timeline-item"><div class="timeline-time">सकाळ</div><div class="timeline-task">**बस व्यवस्थापन आणि प्रस्थान** <span class="timeline-task-manager">व्यवस्थापक: अभय, विजय, यतीनकुमार</span></div></div>
+                    <div class="timeline-note"><span class="timeline-note-title">बस व्यवस्था (४५ सीटर)</span><ul class="bus-list" style="font-size: 15px; line-height: 1.4; columns: 2;"><li>यश, स्मिता, संजू</li><li>प्रकाश (PK), चित्राबेन</li><li>यतीनकुमार (YM), नूतनबेन, रुचिता</li><li>विजय (VB), माधवी</li><li>अभय (AB), अस्मिता, भूमी</li><li>स्वीटी बेन, प्रहम</li><li>प्रेरणा, अर्णव</li><li>शुभांगीबेन, राजेंद्र शहा, प्रिया, तन्मय</li><li>मयुरा, आरती, हर्षदा</li><li>राखी, पूनम, सारिका, श्वेता</li><li>रविभाई आणि वृषाली भाभी</li><li>वहिनी, सायली</li><li>दीपकभाई, शर्मिला भाभी</li><li>विधीकार</li></ul><span class="timeline-note-title" style="margin-top: 8px;">बस साहित्य:</span> १०० पाण्याच्या बाटल्या आणि ५० स्नॅक्स पॅकेट.</div>
+                    <div class="timeline-item" style="margin-top: 15px;"><div class="timeline-time">पोहोचण्यापूर्वी</div><div class="timeline-task">**कॅटररला कॉल करा** (बस मधून) वेलकम ड्रिंक्स तयार ठेवण्यासाठी.</div></div>
+                    <div class="timeline-item"><div class="timeline-time">आगमनानंतर</div><div class="timeline-task">**रूमच्या चाव्या** ताब्यात घेणे आणि रिसॉर्ट स्टाफच्या मदतीने **सामान (Luggage)** रूममध्ये हलवणे.</div></div>
+                    <div class="timeline-item"><div class="timeline-time">दुपारचे जेवण</div><div class="timeline-task">**जेवणाचे व्यवस्थापन** <span class="timeline-task-manager">व्यवस्थापक: प्रकाश (PK), यतीनकुमार (YM), विजय, राहुल, राजेंद्र शहा.</span></div></div>
+                    <div class="timeline-item"><div class="timeline-time">दुपारी ३:०० - ५:००</div><div class="timeline-task">**गणेश आणि पिठी समारंभ** <span class="timeline-task-manager">व्यवस्थापक: चित्राबेन, नूतनबेन, मयुरा, माधवी, अस्मिता</span></div></div>
+                    <div class="timeline-item"><div class="timeline-time">दुपारी ४:०० - ६:००</div><div class="timeline-task">**हाय-टी (Hi-Tea) व्यवस्थापन** <span class="timeline-task-manager">व्यवस्थापक: PK, यतीनकुमार (YM), विजय (VB), अभय (AB), राहुल.</span></div></div>
+                    <div class="timeline-item"><div class="timeline-time">संध्याकाळी ७:०० - १०:३०</div><div class="timeline-task">**संगीत सोहळा** आणि रात्रीचे जेवण <span class="timeline-task-manager">जेवण टेस्टिंग: PK, YM, VB.</span></div></div>
+                </div>
+                <div class="timeline-day-section"><h4 class="timeline-day-title" style="margin-top: 30px;">२५ नोव्हेंबर - मंगळवार</h4>
+                    <div class="timeline-item"><div class="timeline-time">सकाळी ७:००</div><div class="timeline-task">**गोत्राज पूजा** आणि त्यानंतर **पल्लू**.</div></div>
+                    <div class="timeline-item"><div class="timeline-time">सकाळी ८:०० - १०:००</div><div class="timeline-task">**नाश्ता सेवा**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">सकाळी १०:१५ - ११:१५</div><div class="timeline-task">**वरघोडा (बारात)**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">सकाळी ११:३४</div><div class="timeline-task">**विवाह मुहूर्त**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">दुपारी १२:३० - ३:००</div><div class="timeline-task">**फेरे आणि दुपारचे जेवण**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">दुपारी ४:०० - ६:००</div><div class="timeline-task">**हाय-टी (Hi-Tea) सेवा**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">संध्याकाळी ५:४९</div><div class="timeline-task">**सनसेट वरमाला (Sunset Varmala)**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">संध्याकाळी ७:००</div><div class="timeline-task">**छाब विधी**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">संध्याकाळी ७:०० - ८:३०</div><div class="timeline-task">**रात्रीचे जेवण**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">रात्री ८:०० - ९:००</div><div class="timeline-task">**बिदाई समारंभ**</div></div>
+                    <div class="timeline-item"><div class="timeline-time">बिदाई नंतर</div><div class="timeline-task"> हॉटेल स्टाफच्या मदतीने **सामान (Luggage)** (रूम्स मधून बसमध्ये) हलवणे.</div></div>
+                    <div class="timeline-note"><span class="timeline-note-title">पूजा साहित्य (२५ नोव्हेंबर)</span> फुलांचा हार, हिरवे श्रीफळ, लिंबू (१२), चाकू, रुमाल, खिळा, १.२५ रुपयांचे नाणे (सव्वा रुपया).</div>
+                    <div class="timeline-note" style="margin-top: 10px;"><span class="timeline-note-title">लवकर प्रस्थान (कॅम्पोलियनमधून)</span><ul style="font-size: 15px;"><li>**अजयकुमार:** यश, सोनिया, करिश्मा, जयराज</li><li>**उत्कर्ष:** नूतनबेन, आई (Maa), स्वीटी बेन</li><li>**पियुष:** भूमी, रुचिता, अस्मिता, माधवी</li></ul></div>
+                </div>
+            </main>
+            <footer class="page-footer">पान १ | मुख्य कार्यक्रमांची वेळसूची</footer>
+        </div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Starters & Farsan</h4>
-                <ul class="menu-items">
-                    <li>Gujarati Khandhavi, Sandwich Khaman, Mutter Roll</li>
-                </ul>
-            </div>
+        <!-- Page 14: Room Allocation (Marathi - UPDATED) -->
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">रूम व्यवस्था</h2><h3 class="event-subtitle">२४ नोव्हेंबर आगमन | कॉटेज आणि टेंट वाटप</h3>
+                <!-- <p style="text-align: center; margin-bottom: 15px; font-style: italic; color: #5D7A68; font-size: 16px;">कृपया सामानासाठी रिसॉर्ट स्टाफशी समन्वय साधा. आगमनानंतर दिलेल्या नकाशावर तुमची खोली शोधा.</p> -->
+                <div class="room-section-container">
+                    <div class="room-column">
+                        <div class="room-section"><h5>कॉटेज रूम्स (11xx सीरीज)</h5><ul class="room-list">
+                            <li><span class="room-number">११०१:</span> अजयकुमार कुटुंब - ४ + लहान मूल <span class="room-type">(लक्झरी)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११०२:</span> अमितकुमार, प्रेरणा, अर्णव, स्वीटी, प्रहम <span class="room-type">(लक्झरी)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११०३:</span> अभय, विजय, अस्मिता, माधवी, भूमी <span class="room-type">(लक्झरी)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११०५:</span> प्रशांत सुपेकर, प्रज्वल, संदीप... <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११०६:</span> दादा, निलेश, तुषार, अर्चित, ईशान <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११०७:</span> प्रतिभा खांबेकर, धर्माधिकारी... <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११०८:</span> वहिनी, विक्रांत, सायली, पुष्पा + १ <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११०:</span> यतीनकुमार, नूतनबेन, उत्कर्ष, रुचिता <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११२:</span> सारिका (२) + प्रिया (२) <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११४:</span> शुभांगीबेन (४) <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११५:</span> अल्पेश (४) + हर्षदा <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११६:</span> रविकाका, मीनाभाभी <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११८:</span> अशोककाका (३), शर्मिलाभाभी <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">१११९:</span> सुधीर पूनम राखी <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११२०:</span> सुधीर पूनम राखी <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११२१:</span> सोपान गिरमे, होमकर भाऊजी, कुमार <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२२:</span> राहुल (३) + सुभाषभाई <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११२३:</span> स्वप्नील (३), सुनंदाभाभी <span class="room-type">(स्टँडर्ड)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११२४:</span> दादा बसले, नितीन बसले... <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२५:</span> दीप्ती, संजू आत्या, रंजू आत्या, मिनू <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२६:</span> सोपान अवसरकर, अनिल अवसरकर... <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२७:</span> माधुरी रोडे + १, जया बसले, माई <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२८:</span> श्रीलेखा, हेअर आर्टिस्ट, संस्कृती... <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११२९:</span> गुलाब, अखिलेश, अनिल, अनुज, सुनील <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११३०:</span> सोनिया, शिवानी, वैशाली, संगीता <span class="room-type">(स्टँडर्ड)</span> <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">११३१:</span> यश, अजयकुमार, पियुष, आकाश <span class="room-type">(सुट)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">११३२:</span> संजय, स्मिता, प्रकाश, चित्राबेन... <span class="room-type">(सुट)</span> <span class="room-side groom-side">वर पक्ष</span></li>
+                        </ul></div>
+                    </div>
+                    <div class="room-column">
+                        <div class="room-section"><h5>टेंट रूम्स (22xx सीरीज)</h5><ul class="room-list">
+                            <li><span class="room-number">२२०१:</span> चेतक +१ आणि आकाश +१ <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२०२:</span> दिव्या, मानसी, श्रेया, अक्षता <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२०३:</span> यश (रिक्त) <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२०४:</span> निकेला, सॅम, लुईझा, मुक्ता <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२०५:</span> एलियन, अँडी, लुकास <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२०६:</span> अभिनव, समर, सचिन, शुभम <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२०७:</span> अक्षय, प्रणव, अक्षय कुडाळे... <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२०८:</span> ओंकार, करण, सिड, रांका <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२०९:</span> हितेश, जिस्मोन, सुमित सारडा... <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२१०:</span> यश (रिक्त) <span class="room-side groom-side">वर पक्ष</span></li>
+                            <li><span class="room-number">२२११:</span> सोनिया (रिक्त) <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१२:</span> उत्कर्षा, शुभांगी, चैताली, शितल <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१४:</span> स्मिता, पियुषा, रोहित, सुप्रिया <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१५:</span> आदेश, शुभदा, विक्रम, स्नेहल <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१६:</span> कार्तिक कांबळे, विश्वजीत पवार... <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१८:</span> ओंकार चिकणे, वरुण लांडगे <span class="room-side bride-side">वधू पक्ष</span></li>
+                            <li><span class="room-number">२२१९:</span> कॉमन (रिक्त) <span class="room-side common-side">कॉमन</span></li>
+                            <li><span class="room-number">२२२०:</span> फोटोग्राफर १ <span class="room-side common-side">कॉमन</span></li>
+                            <li><span class="room-number">२२२१:</span> फोटोग्राफर २ <span class="room-side common-side">कॉमन</span></li>
+                            <li><span class="room-number">२२२२:</span> विधीकार, दीपक भाई <span class="room-side common-side">कॉमन</span></li>
+                            <li><span class="room-number">२२२३:</span> केटरर स्टाफ <span class="room-side common-side">कॉमन</span></li>
+                        </ul></div>
+                    </div>
+                </div>
+            </main>
+            <footer class="page-footer">पान २ | खोली वाटप (Room Allocation)</footer>
+        </div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Main Indian Course</h4>
-                <ul class="menu-items">
-                    <li>Bhendi Masala, Dum Aloo, Dewani Handi, Steam Rice, Regular Dal</li>
-                </ul>
-            </div>
+        <!-- Pages 15-24: Marathi Menu Content (Retaining existing structure) -->
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">दुपारचे जेवण (Lunch)</h2><h3 class="event-subtitle">२४ नोव्हेंबर - सोमवार | १२० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">मिठाई (Sweets)</h4><ul class="menu-items"><li>दाल बदाम शिरा, अंगूरी रबडी, कराची पिस्ता बर्फी</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">स्टार्टर्स आणि फरसाण</h4><ul class="menu-items"><li>गुजराती खांडवी, सँडविच खमण, मटर रोल</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मुख्य भारतीय जेवण (Main Course)</h4><ul class="menu-items"><li>भेंडी मसाला, दम आलू, दिवानी हांडी, स्टीम राईस, रेग्युलर डाळ</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पोळी/भाकरी (Breads)</h4><ul class="menu-items"><li>फुलका, पुरी</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">तोंडी लावणं (Sides)</h4><ul class="menu-items"><li>फ्रेश ग्रीन सॅलड, लोणचे, चटणी, मुखवास, बुंदी ताक, पापड/फ्रायम्स</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">गणेश इव्हेंट</h4><ul class="menu-items"><li>मॉकटेल, ड्रायफ्रूट</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ३ | लग्नाचा मेनू</footer>
+        </div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Breads</h4>
-                <ul class="menu-items">
-                    <li>Fulka, Puri</li>
-                </ul>
-            </div>
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">हाय-टी (Hi-Tea)</h2><h3 class="event-subtitle">२४ नोव्हेंबर - सोमवार | १२० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">स्नॅक्स/चाट</h4><ul class="menu-items"><li>SPDP (शेव पुरी दही पुरी), कांदा भजी, स्वीट कॉर्न भेळ</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">बेकरी</h4><ul class="menu-items"><li>मालपाणी खारी, बिस्किट</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पेय (Beverages)</h4><ul class="menu-items"><li>चहा, कॉफी, वर्जिन मोहितो</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ४ | लग्नाचा मेनू</footer>
+        </div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Sides & Refreshments</h4>
-                <ul class="menu-items">
-                    <li>Fresh Green Salad, Achar, Chutney, Mukhwas, Boondi Chass, Papad/Fryums</li>
-                </ul>
-            </div>
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">रात्रीचे जेवण आणि संगीत</h2><h3 class="event-subtitle">२४ नोव्हेंबर - सोमवार | १५० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">सूप</h4><ul class="menu-items"><li>लेमन कोथिंबीर (जैन), मंचाव सूप (रेग्युलर)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">स्टार्टर्स</h4><ul class="menu-items"><li>पनीर चिली (जैन), व्हेज सिगार रोल (रेग्युलर)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">चाट</h4><ul class="menu-items"><li>पाणी पुरी, ओली भेळ (जैन + रेग्युलर)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मुख्य भारतीय जेवण (Indian Main)</h4><ul class="menu-items"><li>अमृतसरी छोले, भटूरे (पंजाबी)</li><li>मटका बिर्याणी (जैन)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">ग्लोबल आणि रिजनल</h4><ul class="menu-items"><li>पिझ्झा (जैन + रेग्युलर), पास्ता व्हाईट आणि रेड (इटालियन)</li><li>थालीपीठ, लोणी, दही, ठेचा, लोणचे (महाराष्ट्रीयन)</li><li>मसाला डोसा, मंचूरियन इडली, २ प्रकारची चटणी (साऊथ इंडियन)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मिठाई (Dessert)</h4><ul class="menu-items"><li>मिक्स ड्रायफ्रूट हलवा, बदाम बास्केट, डॉलर जिलेबी, आणि सिझलिंग ब्राउनी विथ व्हॅनिला आईस्क्रीम</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पेय (Beverage)</h4><ul class="menu-items"><li>मसाला दूध</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ५ | लग्नाचा मेनू</footer>
+        </div>
 
-            <div class="menu-category">
-                <h4 class="category-title">Ganesh Event</h4>
-                <ul class="menu-items">
-                    <li>Mocktail, Dryfruit</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 3 | Wedding Menu
-        </footer>
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">नाश्ता (Breakfast)</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार | १५० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">मिठाई (Sweets)</h4><ul class="menu-items"><li>बदाम हलवा, डॉलर जिलेबी</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">गरम भारतीय नाश्ता</h4><ul class="menu-items"><li>पुणेरी मिसळ (स्लाइस सोबत), स्टीम इडली, मेदू वडा, पोहे, मसाला मूग, सांबर, चटणी</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">फरसाण आणि साइड्स</h4><ul class="menu-items"><li>लांब फाफडा, पपई चटणी, येलो कढी, क्लब सँडविच, बारीक शेव, काजू आणि बदाम फ्राइड, खाकरा तूप, शेंगदाणा चटणी, लिंबू</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">बेकरी आणि ब्रेड</h4><ul class="menu-items"><li>ब्रेड, बटर, जॅम, खारी, बिस्किट</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पेय (Beverages)</h4><ul class="menu-items"><li>फ्रेश ऑरेंज ज्यूस, चहा, कॉफी, मसाला दूध</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ६ | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">वरमाला सर्व्हिस</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार | मध्यंतरी सेवा</h3>
+                <div class="menu-category"><h4 class="category-title">क्विक सर्व्हिस (Quick Service)</h4><ul class="menu-items"><li>मॉकटेल, ड्रायफ्रूट, आणि दुपारच्या जेवणातील स्टार्टर्स</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ७ | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">दुपारचे जेवण (Lunch)</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार | २००-२५० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">लाईव्ह सूप आणि स्पेशलिटी</h4><ul class="menu-items"><li>हॉट अँड सावर, टोमॅटो, खाऊ सुई (Kawsouy)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">स्टार्टर्स आणि फरसाण</h4><ul class="menu-items"><li>ग्रीन पीस चीज बॉल, मेक्सिकन टार्ट (स्टार्टर्स)</li><li>अळू वडी, अंगूरी दही वडा (फरसाण)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मुख्य भारतीय जेवण (Main Course)</h4><ul class="menu-items"><li>पनीर टिक्का मसाला, व्हेज कोल्हापुरी, **डबल बी (कठोळ)** (भाजी)</li><li>जीरा राईस, दाल तडका (जैन + रेग्युलर) (राईस/डाळ)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पोळी/भाकरी (Breads)</h4><ul class="menu-items"><li>फुलका, लच्छा पराठा, स्टफ कुलचा</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">तोंडी लावणं (Sides)</h4><ul class="menu-items"><li>रोस्टेड पापड, फ्रेश ग्रीन सॅलड, लोणचे, चटणी, मुखवास, मसाला ताक</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मिठाई आणि फळे</h4><ul class="menu-items"><li>रबडी मालपुआ, कोकोनट टेंडर, व्हाईट रोस्टेड बर्फी (मिठाई)</li><li>अमेरिकन ड्रायफ्रूट, स्वीट पान (आईस्क्रीम)</li><li>३ भारतीय फळे, २ इम्पोर्टेड फळे</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ८ | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">बारात स्वागत</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार</h3>
+                <div class="menu-category"><h4 class="category-title">पेय (Beverages)</h4><ul class="menu-items"><li>बेरी क्रश आणि पीनाकोलाडा कॉकटेल, २०० मिली पाण्याच्या बाटल्या</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">स्नॅक्स</h4><ul class="menu-items"><li>समोसा, हराभरा कबाब</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">साइड्स</h4><ul class="menu-items"><li>४ प्रकारचे ड्रायफ्रुट्स</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ९ | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">हाय-टी (Hi-Tea)</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार | १२० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">स्नॅक्स</h4><ul class="menu-items"><li>मुगडाळ चिल्ला, आलू कचोरी, मिक्स भजी</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पेय आणि साइड्स</h4><ul class="menu-items"><li>चहा, कॉफी, खारी, बिस्किट</li></ul></div>
+            </main>
+            <footer class="page-footer">पान १० | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">रात्रीचे जेवण (Dinner)</h2><h3 class="event-subtitle">२५ नोव्हेंबर - मंगळवार | १२० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">मुख्य जेवण (Main Course)</h4><ul class="menu-items"><li>पावभाजी, तवा पुलाव, रायता</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मिठाई आणि पेय</h4><ul class="menu-items"><li>गरम गुलाब जामुन, व्हॅनिला आईस्क्रीम विथ चॉकलेट सॉस, कॉफी</li></ul></div>
+            </main>
+            <footer class="page-footer">पान ११ | लग्नाचा मेनू</footer>
+        </div>
+
+        <div class="poster-page">
+            <header class="page-header"><h1 class="wedding-title">यश आणि सोनियाचा भव्य विवाह सोहळा</h1></header>
+            <main class="menu-content"><h2 class="event-title">ग्रँड रिसेप्शन डिनर</h2><h3 class="event-subtitle">२७ नोव्हेंबर | ४०० लोक</h3>
+                <div class="menu-category"><h4 class="category-title">सूप</h4><ul class="menu-items"><li>टोमॅटो, मंचाव</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">वेलकम ड्रिंक्स</h4><ul class="menu-items"><li>पेरू चिली, मिक्स फ्रूट पंच, ब्लू लगून, वर्जिन मोहितो</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">लाईव्ह स्वीट्स</h4><ul class="menu-items"><li>तवा महफिल, मलाई घेवर, ड्रायफ्रूट केक, कॉफी रसगुल्ला</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">स्टार्टर्स आणि फरसाण</h4><ul class="menu-items"><li>बार्बेक्यू ३ प्रकार (पनीर, बेबी कॉर्न, अननस) (स्टार्टर)</li><li>इटालियन बोट, पापड पुदिना डिलाईट (फरसाण)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मुख्य भारतीय जेवण (Main Indian Course)</h4><ul class="menu-items"><li>पनीर मुमताज, व्हेज भुना, लाईव्ह तवा भाजी (भाजी)</li><li>जीरा राईस, दाल तडका (राईस/डाळ)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पोळी/भाकरी (Breads)</h4><ul class="menu-items"><li>फुलका, रुमाली रोटी, **बेबी नान (Confirm this!)**</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">ग्लोबल आणि रिजनल</h4><ul class="menu-items"><li>ग्रेव्ही मंचूरियन, हक्का नूडल्स, शेजवान राईस (चायनीज)</li><li>पिझ्झा, पास्ता २ प्रकार, नाचोस, टॅकोस (इटालियन)</li><li>साबुदाणा वडा, कोशिंबीर (महाराष्ट्रीयन)</li><li>बाहुबली डोसा, थट्टे इडली, २ प्रकारची चटणी (साऊथ इंडियन)</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">मिठाई आणि फळे</h4><ul class="menu-items"><li>बटर स्कॉच आईस्क्रीम, केसर राजभोग आईस्क्रीम</li><li>३ भारतीय फळे, २ इम्पोर्टेड फळे</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">पेय आणि पाचक</h4><ul class="menu-items"><li>कॉफी, एस्प्रेसो, मसाला पान</li></ul></div>
+                <div class="menu-category"><h4 class="category-title">साइड्स</h4><ul class="menu-items"><li>फ्रेश ग्रीन सॅलड, लोणचे, चटणी, मुखवास</li></ul></div>
+            </main>
+            <footer class="page-footer">पान १२ | लग्नाचा मेनू</footer>
+        </div>
     </div>
 
-    <!-- Page 4: Nov 24th - Hi Tea -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Hi Tea</h2>
-            <h3 class="event-subtitle">November 24th - Monday | 120 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Snacks/Chaat</h4>
-                <ul class="menu-items">
-                    <li>SPDP, Kanda Bhaji, Sweet corn bhel</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Bakery</h4>
-                <ul class="menu-items">
-                    <li>Malpani Khari, Biscuit</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverages</h4>
-                <ul class="menu-items">
-                    <li>Tea, coffee, Virgin Mojito</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 4 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 5: Nov 24th - Dinner / Sangeet -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Dinner & Sangeet</h2>
-            <h3 class="event-subtitle">November 24th - Monday | 150 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Soup</h4>
-                <ul class="menu-items">
-                    <li>Lemon Coriander (Jain), Manchow Soup (Regular)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Starters</h4>
-                <ul class="menu-items">
-                    <li>Paneer Chilli (Jain), Veg Cigar Roll (Regular)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Chaat</h4>
-                <ul class="menu-items">
-                    <li>Pani Puri, Oli bhel (Jain + Regular)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Indian Main</h4>
-                <ul class="menu-items">
-                    <li>Amritsari Chole, Bhature (Punjabi)</li>
-                    <li>Matka Biryani (Jain)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Global & Regional</h4>
-                <ul class="menu-items">
-                    <li>Pizza (Jain + Regular), Pasta White & Red (Italian)</li>
-                    <li>Thalepeeth, Loni, Dahi, Thecha, Aachar (Maharashtrian)</li>
-                    <li>Masala Dosa, Manchurian Idli, 2 types of chutney (South Indian)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Dessert</h4>
-                <ul class="menu-items">
-                    <li>Mix Dryfruit Halwa, Almond Basket, Dollar Jalebi, and Sizzling Brownie with Vanilla ice cream
-                    </li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverage</h4>
-                <ul class="menu-items">
-                    <li>Masala Milk</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 5 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 6: Nov 25th - Breakfast -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Breakfast</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday | 150 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Sweets</h4>
-                <ul class="menu-items">
-                    <li>Badam Halwa, Dollar Jalebi</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Hot Indian</h4>
-                <ul class="menu-items">
-                    <li>Puneri misal with slice, steam idli, Medu wada, Poha, Masala Moong, sambhar, chutney</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Farsan & Sides</h4>
-                <ul class="menu-items">
-                    <li>Lamba Fafda, Papaya chutney, yellow kadi, Club sandwich, barik shev, Kaju & Badam fried, Khakra
-                        ghee, peanut chutney, lemon</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Bakery & Bread</h4>
-                <ul class="menu-items">
-                    <li>Bread, butter, jam, Khari, biscuit</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverages</h4>
-                <ul class="menu-items">
-                    <li>Fresh orange juice, Tea, coffee, masala milk</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 6 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 7: Nov 25th - Varmala Service -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Varmala Service</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday | Interim Service</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Quick Service</h4>
-                <ul class="menu-items">
-                    <li>Mocktail, dry fruit, and Starters from the lunch menu</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 7 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 8: Nov 25th - Lunch -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Lunch</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday | 200-250 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Live Soup & Specialty</h4>
-                <ul class="menu-items">
-                    <li>Hot & sour, Tomato, Kawsouy</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Starters & Farsan</h4>
-                <ul class="menu-items">
-                    <li>Green peas cheese ball, Mexican Tart (Starters)</li>
-                    <li>Alu wadi, Angoori Dahi wada (Farsan)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Main Indian Course</h4>
-                <ul class="menu-items">
-                    <li>Paneer Tikka Masala, Veg Kolhapuri, Double B (Kathol) (Sabji)</li>
-                    <li>Jeera Rice, Dal Tadka (Jain + Regular) (Rice/Dal)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Breads</h4>
-                <ul class="menu-items">
-                    <li>Fulka, Laccha Paratha, Stuff Kulcha</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Sides & Refreshments</h4>
-                <ul class="menu-items">
-                    <li>Roasted Papad, Fresh Green Salad, Aachar, Chutney, Mukhwas, Masala Chass</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Dessert & Fruit</h4>
-                <ul class="menu-items">
-                    <li>Rabdi Malpua, Coconut Tender, White roasted barfi (Sweets)</li>
-                    <li>American Dryfruit, Sweet paan (Ice Cream)</li>
-                    <li>3 Indian Fruits, 2 Imported Fruits</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 8 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 9: Nov 25th - Baraat Swagat -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Baraat Swagat</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverages</h4>
-                <ul class="menu-items">
-                    <li>Berry Crush & Piñacolada cocktail, 200ml water bottles</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Snacks</h4>
-                <ul class="menu-items">
-                    <li>Samosa, Harabhara Kabab</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Sides</h4>
-                <ul class="menu-items">
-                    <li>4 types of dry fruits</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 9 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 10: Nov 25th - Hi Tea -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Hi Tea</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday | 120 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Snacks</h4>
-                <ul class="menu-items">
-                    <li>Moongdal Chilla, Aloo kachori, Mix bhaji</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverages/Sides</h4>
-                <ul class="menu-items">
-                    <li>Tea, coffee, khari, biscuit</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 10 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 11: Nov 25th - Dinner -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Dinner</h2>
-            <h3 class="event-subtitle">November 25th - Tuesday | 120 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Main Course</h4>
-                <ul class="menu-items">
-                    <li>Pav bhaji, Tawa Pulav, Raita</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Dessert & Beverage</h4>
-                <ul class="menu-items">
-                    <li>Garam Gulab Jamun, vanilla ice cream with chocolate sauce, Coffee</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 11 | Wedding Menu
-        </footer>
-    </div>
-
-    <!-- Page 12: Nov 27th - Grand Reception Dinner -->
-    <div class="poster-page">
-        <header class="page-header">
-            <h1 class="wedding-title">YASH KI SONI GRAND CELEBRATION</h1>
-        </header>
-        <main class="menu-content">
-            <h2 class="event-title">Grand Reception Dinner</h2>
-            <h3 class="event-subtitle">November 27th | 400 Pax</h3>
-
-            <div class="menu-category">
-                <h4 class="category-title">Soup</h4>
-                <ul class="menu-items">
-                    <li>Tomato, Manchow</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Welcome Drinks</h4>
-                <ul class="menu-items">
-                    <li>Peru chilli, Mix fruit punch, Blue lagoon, virgin mojito</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Live Sweets</h4>
-                <ul class="menu-items">
-                    <li>Tawa Mehfil, Malai ghewar, Dryfruit cake, coffee rasagulla</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Starters & Farsan</h4>
-                <ul class="menu-items">
-                    <li>Barbeque 3 types (Paneer, baby corn, pineapple) (Starter)</li>
-                    <li>Italian Boat, Papad Pudina delight (Farsan)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Main Indian Course</h4>
-                <ul class="menu-items">
-                    <li>Paneer Mumtaz, Veg Bhoona, Live Tawa Subji (Sabji)</li>
-                    <li>Jeera Rice, Dal Tadka (Rice/Dal)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Breads</h4>
-                <ul class="menu-items">
-                    <li>Fulka, Rumali Roti, **Baby Naan (Confirm this!)**</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Global & Regional</h4>
-                <ul class="menu-items">
-                    <li>Gravy Machurian, Hakka noodles, shezwan Rice (Chinese)</li>
-                    <li>Pizza, Pasta 2 types, Nachos, Tacos (Italian)</li>
-                    <li>Sabudana wada, Koshimbir (Maharashtrian)</li>
-                    <li>Bahubali dosa, Thatte Idli, 2 types of chutney (South Indian)</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Dessert & Fruit</h4>
-                <ul class="menu-items">
-                    <li>Butter scotch Ice Cream, kesar Rajbhog Ice Cream</li>
-                    <li>3 Indian Fruits, 2 Imported Fruits</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Beverages & Digestives</h4>
-                <ul class="menu-items">
-                    <li>Coffee, espresso, Masala paan</li>
-                </ul>
-            </div>
-
-            <div class="menu-category">
-                <h4 class="category-title">Sides</h4>
-                <ul class="menu-items">
-                    <li>Fresh green salad, aachar, chutney, Mukhwas</li>
-                </ul>
-            </div>
-        </main>
-        <footer class="page-footer">
-            Page 12 | Wedding Menu
-        </footer>
-    </div>
 </body>
 
 </html>
