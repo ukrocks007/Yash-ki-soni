@@ -252,16 +252,26 @@ function renderRooms(data) {
   if (descEl) descEl.textContent = description || '';
   const grid = section.querySelector('.room-grid');
   if (grid && Array.isArray(sections)) {
-    grid.innerHTML = sections.map(sec => `
-      <div class="room-section fade-in">
-        <h3 class="room-section-title">${sec.title || ''}</h3>
-        <ul class="room-list">
-          ${(sec.rooms || []).map(r => `
-            <li><span class="room-number">${r.number}:</span> ${r.label}${r.type ? ` <span class="room-type">(${r.type})</span>` : ''}</li>
-          `).join('')}
-        </ul>
-      </div>
-    `).join('');
+    grid.innerHTML = sections.map(sec => {
+      return `
+        <div class="room-section fade-in">
+          <h3 class="room-section-title">${sec.title || ''}</h3>
+          <ul class="room-list">
+            ${(sec.rooms || []).map(r => {
+              const sideIcon = r.side === 'Groom' ? '🕺🏻' : r.side === 'Bride' ? '👸🏻' : '🏨';
+              const sideClass = r.side ? r.side.toLowerCase() + '-side' : 'common-side';
+              return `
+                <li>
+                  <span class="room-side-icon ${sideClass}">${sideIcon}</span>
+                  <span class="room-number">${r.number}:</span> 
+                  ${r.label}${r.type ? ` <span class="room-type">(${r.type})</span>` : ''}
+                </li>
+              `;
+            }).join('')}
+          </ul>
+        </div>
+      `;
+    }).join('');
   }
   // Notes block
   const oldNotes = Array.from(section.querySelectorAll('.section-header')).slice(1);
